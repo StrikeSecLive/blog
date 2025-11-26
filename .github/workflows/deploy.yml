@@ -30,11 +30,11 @@ jobs:
            mv out blog
 
       - name: Disable Jekyll
-        run: touch out/.nojekyll
+        run: touch blog/.nojekyll
 
       - name: Add CNAME (optional)
         if: ${{ env.CUSTOM_DOMAIN != '' }}
-        run: echo "${{ env.CUSTOM_DOMAIN }}" > out/CNAME
+        run: echo "${{ env.CUSTOM_DOMAIN }}" > blog/CNAME
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
