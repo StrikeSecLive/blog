@@ -9,4 +9,5 @@ module.exports = withMDX({
   output: 'export',
   basePath: isProd ? '/blog' : '',
   assetPrefix: isProd ? '/blog/' : '',
+  trailingSlash: true
 });
