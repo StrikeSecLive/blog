@@ -1,13 +1,11 @@
-const withMDX = require('@next/mdx')({
-  extension: /\.mdx?$/
-});
 
-const isProd = process.env.NODE_ENV === 'production';
+const withMDX = require('@next/mdx')({
+  extension: /\.mdx?$/,
+});
 
 module.exports = withMDX({
   pageExtensions: ['js', 'jsx', 'md', 'mdx'],
-  output: 'export',
-  basePath: isProd ? '/blog' : '',
-  assetPrefix: isProd ? '/blog/' : '',
-  trailingSlash: true
+  output: 'export',      // Next.js will emit static assets to ./out
+  trailingSlash: true,   // GitHub Pages works better with trailing slashes
+  // IMPORTANT: remove basePath and assetPrefix for root deployment
 });
