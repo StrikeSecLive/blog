@@ -1,5 +1,4 @@
 
-// pages/blog/[slug].js
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -15,8 +14,10 @@ import { getPostSlugs, getPostBySlug } from '../../lib/posts';
 
 export async function getStaticPaths() {
   const slugs = getPostSlugs();
-  const paths = slugs.map((slug) => ({ params: { slug } }));
-  return { paths, fallback: false };
+  return {
+    paths: slugs.map((slug) => ({ params: { slug } })),
+    fallback: false,
+  };
 }
 
 export async function getStaticProps({ params }) {
@@ -29,7 +30,6 @@ export async function getStaticProps({ params }) {
         [rehypeAutolinkHeadings, { behavior: 'append' }],
         rehypePrism,
       ],
-      format: 'mdx',
     },
   });
 
@@ -45,7 +45,9 @@ export default function BlogPost({ meta, mdxSource }) {
   const title = meta.title || meta.slug;
   const dateFmt = meta.date
     ? new Date(meta.date).toLocaleDateString(undefined, {
-        year: 'numeric', month: 'short', day: 'numeric'
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric',
       })
     : null;
 
@@ -60,28 +62,38 @@ export default function BlogPost({ meta, mdxSource }) {
 
       <article style={{ padding: '2rem 1rem', maxWidth: 880, margin: '0 auto' }}>
         <header style={{ marginBottom: '1.5rem' }}>
-          /blog
-            ← Back to blog
-          </Link>
+          <nav aria-label="Breadcrumb">
+            <Link href="/blog" style={{ color: '#2563eb', textDecorationo blog
+            </Link>
+          </nav>
+
           <h1 style={{ margin: '0.75rem 0' }}>{title}</h1>
+
           {dateFmt && (
             <time dateTime={meta.date} style={{ color: '#6b7280' }}>
               {dateFmt}
             </time>
           )}
+
           {Array.isArray(meta.tags) && meta.tags.length > 0 && (
             <div style={{ marginTop: '0.5rem', display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
-              {meta.tags.map((t) => (
-                <span key={t} style={{
-                  fontSize: '0.75rem',
-                  background: '#eef2ff',
-                  color: '#3730a3',
-                  borderRadius: '999px',
-                  padding: '0.25rem 0.5rem'
-                }}>{t}</span>
+              {meta.tags.map((tag) => (
+                <span
+                  key={tag}
+                  style={{
+                    fontSize: '0.75rem',
+                    background: '#eef2ff',
+                    color: '#3730a3',
+                    borderRadius: '999px',
+                    padding: '0.25rem 0.5rem',
+                  }}
+                >
+                  {tag}
+                </span>
               ))}
             </div>
           )}
+
           {meta.thumbnail && (
             <div style={{ position: 'relative', width: '100%', aspectRatio: '16/9', marginTop: '1rem' }}>
               <Image
