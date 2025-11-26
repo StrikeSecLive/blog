@@ -4,8 +4,7 @@ export default function Layout({ children, hideNav = false }) {
       {!hideNav && (
         <header style={{ padding: '1rem 2rem', borderBottom: '1px solid #e5e7eb', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-            <img src="/logo.png" alt="StrikeSec Live Logo" style={{ height: '40px' }} />
-            <span style={{ fontSize: '1.25rem', fontWeight: 'bold', color: '#111827' }}>StrikeSec Live</span>
+            <img src="/logo.png" alt="StrikeSec Live Logo" style={{ height: '40px' }} />            
           </div>
           <nav style={{ display: 'flex', gap: '1.5rem' }}>
             <a href="/" style={{ textDecoration: 'none', color: '#2563eb', fontWeight: '500' }}>Home</a>
