@@ -1,13 +1,14 @@
-
 export default function Layout({ children, hideNav = false }) {
   return (
     <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
       {!hideNav && (
         <header style={{ padding: '1rem', borderBottom: '1px solid #e5e7eb' }}>
           <nav style={{ display: 'flex', gap: '1rem' }}>
-            /Home</a>
-            <a href="/blog" style={{ textDecoration: 'none', color: '#ithub.com/StrikeSecLive"
-               target="_blank"
+            <a href="/" style={{ textDecoration: 'none', color: '#2563eb' }}>Home</a>
+            <a href="/blog" style={{ textDecoration: 'none', color: '#2563eb' }}>Blog</a>
+            <a
+              href="https://github.com/StrikeSecLive"
+              target="_blank"
               rel="noopener noreferrer"
               style={{ textDecoration: 'none', color: '#2563eb' }}
             >
