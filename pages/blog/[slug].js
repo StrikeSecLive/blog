@@ -63,8 +63,7 @@ export default function BlogPost({ meta, mdxSource }) {
       <article style={{ padding: '2rem 1rem', maxWidth: 880, margin: '0 auto' }}>
         <header style={{ marginBottom: '1.5rem' }}>
           <nav aria-label="Breadcrumb">
-            <Link href="/blog" style={{ color: '#2563eb', textDecoration: 'none'/nav>
-            </Link>
+            <Link href="/blog" style={{ color: '#2563eb', textDecoration: 'none'}} />
           </nav>
 
           <h1 style={{ margin: '0.75rem 0' }}>{title}</h1>
