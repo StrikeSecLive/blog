@@ -27,18 +27,17 @@ jobs:
       - name: Build (static export)
         run: |
            npm run build
-           mv out blog
 
       - name: Disable Jekyll
-        run: touch blog/.nojekyll
+        run: touch out/.nojekyll
 
       - name: Add CNAME (optional)
         if: ${{ env.CUSTOM_DOMAIN != '' }}
-        run: echo "${{ env.CUSTOM_DOMAIN }}" > blog/CNAME
+        run: echo "${{ env.CUSTOM_DOMAIN }}" > out/CNAME
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./blog
+          publish_dir: ./out
           publish_branch: gh-pages
