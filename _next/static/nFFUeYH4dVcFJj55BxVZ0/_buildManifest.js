@@ -1,4 +1,7 @@
 self.__BUILD_MANIFEST = {
+  "/": [
+    "static/chunks/6dc763ba71803e73.js"
+  ],
   "/[slug]": [
     "static/chunks/75b69a4633b84cc4.js"
   ],
@@ -11,6 +14,7 @@ self.__BUILD_MANIFEST = {
     "fallback": []
   },
   "sortedPages": [
+    "/",
     "/_app",
     "/_error",
     "/[slug]"
