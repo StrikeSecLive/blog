@@ -1,5 +1,3 @@
-import Link from 'next/link';
-import { useRouter } from 'next/router';
 
 export default function Layout({ children, hideNav = false }) {
   return (
@@ -8,8 +6,13 @@ export default function Layout({ children, hideNav = false }) {
         <header style={{ padding: '1rem', borderBottom: '1px solid #e5e7eb' }}>
           <nav style={{ display: 'flex', gap: '1rem' }}>
             /Home</a>
-            /blogBlog</a>
-            <a href="https://github.com/StrikeSecLive" targett="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: '#2563eb' }}>GitHub</a>
+            <a href="/blog" style={{ textDecoration: 'none', color: '#ithub.com/StrikeSecLive"
+               target="_blank"
+              rel="noopener noreferrer"
+              style={{ textDecoration: 'none', color: '#2563eb' }}
+            >
+              GitHub
+            </a>
           </nav>
         </header>
       )}
