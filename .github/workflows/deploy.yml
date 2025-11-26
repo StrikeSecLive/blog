@@ -23,9 +23,12 @@ jobs:
       - name: Install dependencies
         run: |
           if [ -f package-lock.json ]; then npm ci; else npm install; fi
-
+    
       - name: Build (static export)
-        run: npm run build
+        run: |
+           npm run build
+           npm run export
+           mv out blog
 
       - name: Disable Jekyll
         run: touch out/.nojekyll
@@ -38,5 +41,5 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./out
+          publish_dir: ./blog
           publish_branch: gh-pages
