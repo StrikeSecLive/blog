@@ -1,6 +1,6 @@
 export default function Layout({ children, hideNav = false }) {
   return (
-    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', fontFamily: 'sans-serif', backgroundColor: '#111827', color: '#fff' }}>
+    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', fontFamily: 'sans-serif', backgroundColor: '#2b3742', color: '#fff' }}>
       {!hideNav && (
         <header style={{ padding: '1rem 2rem', borderBottom: '1px solid #374151', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
