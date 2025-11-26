@@ -1,0 +1,26 @@
+{
+  "name": "strikeSecLive-tailwind-nextjs",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "export": "next export",
+    "start": "next start"
+  },
+  "dependencies": {
+    "next": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "@next/mdx": "latest",
+    "gray-matter": "latest",
+    "next-mdx-remote": "latest"
+  },
+  "devDependencies": {
+    "tailwindcss": "latest",
+    "postcss": "latest",
+    "autoprefixer": "latest",
+    "@tailwindcss/typography": "latest",
+    "@tailwindcss/postcss": "latest"
+  }
+}

@@ -1,0 +1,4 @@
+@import "tailwindcss";
+
+html, body { height: 100%; }
+body { background-color: #2b3742; color: white; font-family: sans-serif; }
