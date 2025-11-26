@@ -1,46 +1,21 @@
 export default function Layout({ children, hideNav = false }) {
   return (
-    <div
-      style={{
-        minHeight: '100vh',
-        display: 'flex',
-        flexDirection: 'column',
-        fontFamily: 'sans-serif',
-        backgroundColor: '#111827', // Dark background
-        color: '#fff',
-      }}
-    >
+    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', fontFamily: 'sans-serif', backgroundColor: '#111827', color: '#fff' }}>
       {!hideNav && (
-        <header
-          style={{
-            padding: '1rem 2rem',
-            borderBottom: '1px solid #374151',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-          }}
-        >
+        <header style={{ padding: '1rem 2rem', borderBottom: '1px solid #374151', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-            <img src="/logo.png" alt="StrikeSec Live Logo" style={{ heightlex', gap: '1.5rem' }}>
+            <img src="/logo.png" alt="StrikeSec Live Logo" style={{ height: '40px' }} />
+          </div>
+          <nav style={{ display: 'flex', gap: '1.5rem' }}>
+            <a href="/" style={{ textDecoration: 'none', color: '#fff', fontWeight: '500' }} onMouseOver={(e) => e.target.style.color = '#a5f63a'} onMouseOut={(e) => e.target.style.color = '#fff'}>Home</a>
+            <a href="/blog" style={{ textDecoration: 'none', color: '#fff', fontWeight: '500' }} onMouseOver={(e) => e.target.style.color = '#a5f63a'} onMouseOut={(e) => e.target.style.color = '#fff'}>Blog</a>
             <a
-              href="/"
-              style={{ textDecoration: 'none', color: '#fff', fontWeightff')}
-            >
-              Home
-            </a>
-            <a
-             style.color = '#a5f63a')}
-              onMouseOut={(e) => (e.target.style.color = '#fff')}
-            >
-              Blog
-            </a>
-            <a
-              href="https://github.com/StrikeSecLive/"
+              href="https://github.com/StrikeSecLive"
               target="_blank"
               rel="noopener noreferrer"
               style={{ textDecoration: 'none', color: '#fff', fontWeight: '500' }}
-              onMouseOver={(e) => (e.target.style.color = '#a5f63a')}
-              onMouseOut={(e) => (e.target.style.color = '#fff')}
+              onMouseOver={(e) => e.target.style.color = '#a5f63a'}
+              onMouseOut={(e) => e.target.style.color = '#fff'}
             >
               GitHub
             </a>
@@ -51,15 +26,7 @@ export default function Layout({ children, hideNav = false }) {
       <main style={{ flex: 1 }}>{children}</main>
 
       {!hideNav && (
-        <footer
-          style={{
-            padding: '1rem',
-            borderTop: '1px solid #374151',
-            textAlign: 'center',
-            color: '#9ca3af',
-            fontSize: '0.875rem',
-          }}
-        >
+        <footer style={{ padding: '1rem', borderTop: '1px solid #374151', textAlign: 'center', color: '#9ca3af', fontSize: '0.875rem' }}>
           © {new Date().getFullYear()} StrikeSec Live
         </footer>
       )}
