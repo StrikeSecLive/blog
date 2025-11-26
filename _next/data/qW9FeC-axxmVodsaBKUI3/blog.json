@@ -1,0 +1,1 @@
+{"pageProps":{"posts":[{"slug":"post","title":"post","date":null,"excerpt":"","thumbnail":"/logo.png","tags":[]},{"slug":"post2","title":"post2","date":null,"excerpt":"","thumbnail":"/logo.png","tags":[]},{"slug":"welcome","title":"Welcome","date":"2025-11-24","excerpt":"Intro to the blog.","thumbnail":"/thumbnails/welcome.jpg","tags":["pentest","xss"]}]},"__N_SSG":true}
