@@ -15,7 +15,7 @@ export default function Layout({ children }) {
           </div>
           <nav className="flex gap-6 text-lg">
             <a href="/" className="hover:text-accent">Home</a>
-            <a href="/docs" className="hover:text-accent">Docs</a>
+            <a href="/blog" className="hover:text-accent">Blog</a>
             <a href="https://github.com/StrikeSecLive/blog" target="_blank" rel="noreferrer" className="hover:text-accent">GitHub</a>
           </nav>
         </div>
