@@ -4,7 +4,7 @@ module.exports = {
     extend: {
       colors: {
         navy: '#2C3848',
-        accent: '#A6FF00',
+        accent: '#a5f63a',
       },
     },
   },
