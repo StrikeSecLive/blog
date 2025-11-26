@@ -1,29 +1,26 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
-
-export default function Layout({ children }) {
-  const { basePath } = useRouter();
+export default function Layout({ children, hideNav = false }) {
   return (
-    <div className="min-h-screen flex flex-col bg-navy text-white">
-      <header className="bg-navy border-b border-gray-700">
-        <div className="max-w-6xl mx-auto flex items-center justify-between p-4">
-          <div className="flex items-center gap-3">
-            <img 
-            src={`${basePath}/logo.png`}
-            alt="StrikeSec Live Logo" className="h-12" />
-          </div>
-          <nav className="flex gap-6 text-lg">
-            <a href="/" className="hover:text-accent">Home</a>
-            <a href="/blog" className="hover:text-accent">Blog</a>
-            <a href="https://github.com/StrikeSecLive/blog" target="_blank" rel="noreferrer" className="hover:text-accent">GitHub</a>
+    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+      {!hideNav && (
+        <header style={{ padding: '1rem', borderBottom: '1px solid #e5e7eb' }}>
+          <nav style={{ display: 'flex', gap: '1rem' }}>
+            /Home</a>
+            /blogBlog</a>
+            <a href="https://github.com/StrikeSecLive" targett="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: '#2563eb' }}>GitHub</a>
           </nav>
-        </div>
-      </header>
-      <main className="flex-1 max-w-6xl mx-auto p-6">{children}</main>
-      <footer className="bg-navy border-t border-gray-700 text-center p-4 text-sm">
-        © {new Date().getFullYear()} StrikeSec Live — Built with Next.js & Tailwind CSS
-      </footer>
+        </header>
+      )}
+
+      <main style={{ flex: 1 }}>{children}</main>
+
+      {!hideNav && (
+        <footer style={{ padding: '1rem', borderTop: '1px solid #e5e7eb', textAlign: 'center' }}>
+          © {new Date().getFullYear()} StrikeSec Live
+        </footer>
+      )}
     </div>
   );
 }
