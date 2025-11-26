@@ -62,15 +62,15 @@ export default function BlogPost({ meta, mdxSource }) {
       <article style={{ padding: '2rem 1rem', maxWidth: 880, margin: '0 auto' }}>
         <header style={{ marginBottom: '1.5rem' }}>
           <nav aria-label="Breadcrumb">
-            <Link href="/blog" style={{ color: '#2563eb', textDecoration: 'none' }}>
+            <Link href="/blog" style={{ color: '#2563eb', textDecoration: 'none', fontWeight: '500' }}>
               <span aria-hidden="true">←</span> Back to blog
             </Link>
           </nav>
 
-          <h1 style={{ margin: '0.75rem 0' }}>{title}</h1>
+          <h1 style={{ margin: '0.75rem 0', fontSize: '2rem', fontWeight: 'bold' }}>{title}</h1>
 
           {dateFmt && (
-            <time dateTime={meta.date} style={{ color: '#6b7280' }}>
+            <time dateTime={meta.date} style={{ color: '#6b7280', fontSize: '0.875rem' }}>
               {dateFmt}
             </time>
           )}
