@@ -6,7 +6,7 @@
 html, body { height: 100%; }
 body { background-color: #2b3742; color: white; font-family: sans-serif; }
 
-/* Anchor links for headings */
+/* Anchor links */
 .prose .anchor {
   @apply absolute -ml-6 pl-2 text-gray-400 no-underline opacity-0 transition;
 }
@@ -14,9 +14,14 @@ body { background-color: #2b3742; color: white; font-family: sans-serif; }
   @apply opacity-100;
 }
 
-/* Links */
+/* Links (raw CSS for accent color) */
 .prose a {
-  @apply text-accent hover:text-green-500 underline transition;
+  color: #a5f63a; /* accent */
+  text-decoration: underline;
+  transition: color 0.2s;
+}
+.prose a:hover {
+  color: #22c55e; /* green-500 */
 }
 
 /* Tables */
@@ -42,5 +47,7 @@ body { background-color: #2b3742; color: white; font-family: sans-serif; }
   @apply bg-gray-800 text-gray-100 p-4 rounded-lg overflow-x-auto font-mono text-sm;
 }
 .prose code {
-  @apply text-accent font-medium;
+  color: #a5f63a; /* accent color */
+  font-weight: 500;
 }
+
