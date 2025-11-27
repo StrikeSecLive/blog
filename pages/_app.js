@@ -4,8 +4,8 @@ import Layout from '../components/Layout';
 import { MDXProvider } from '@mdx-js/react';
 import CodeBlock from '../components/CodeBlock';
 
-const components = {
-  code: (props) => <CodeBlock {...props} />,
+const components = { 
+  pre: (props) => <CodeBlock {...props} />,
 };
 
 export default function App({ Component, pageProps }) {
