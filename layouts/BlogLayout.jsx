@@ -1,5 +1,5 @@
 import { MDXRemote } from 'next-mdx-remote';
-import MDXComponents from '../../components/MDXComponents';
+import MDXComponents from '../../components';
 
 export default function BlogLayout({ mdxSource }) {
   return (
