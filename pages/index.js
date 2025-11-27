@@ -22,8 +22,12 @@ export default function Home() {
             rounded-md
             hover:bg-sky-700
             transition-colors duration-200
+            shadow-md
           "
-        </div>
+        >
+          Visit Blog →
+        </a>
+      </div>
     </div>
   );
 }
