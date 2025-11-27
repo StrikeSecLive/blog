@@ -1,58 +1,80 @@
 
+/* Tailwind entry points (keep these) */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-html, body { height: 100%; }
-body { background-color: #2b3742; color: white; font-family: sans-serif; }
+/* ---------------------- */
+/* MDX / Blog Typography  */
+/* ---------------------- */
 
+/* Anchor links injected by rehype-autolink-headings */
 .prose .anchor {
   position: absolute;
-  margin-left: -1.5rem; /* -ml-6 equivalent */
-  padding-left: 0.5rem; /* pl-2 equivalent */
-  color: #9ca3af; /* text-gray-400 */
+  margin-left: -1.5rem;              /* -ml-6 */
+  padding-left: 0.5rem;              /* pl-2 */
+  color: #9ca3af;                    /* text-gray-400 */
   text-decoration: none;
   opacity: 0;
-  transition: opacity 0.2s;
+  transition: opacity 0.2s ease;
 }
-
 .prose *:hover > .anchor {
   opacity: 1;
 }
 
-/* Links (raw CSS for accent color to avoid @apply error) */
+/* Links (use your accent color from tailwind.config.js) */
 .prose a {
-  color: #a5f63a; /* accent */
+  color: #a5f63a;                    /* accent */
   text-decoration: underline;
-  transition: color 0.2s;
+  transition: color 0.2s ease;
 }
 .prose a:hover {
-  color: #22c55e; /* green-500 */
+  color: #22c55e;                    /* green-500 */
 }
 
 /* Tables */
 .prose table {
-  @apply w-full border-collapse overflow-hidden rounded-lg;
+  width: 100%;
+  border-collapse: collapse;
+  overflow: hidden;
+  border-radius: 0.5rem;             /* rounded-lg */
 }
 .prose thead {
-  @apply bg-gray-50;
+  background-color: #f9fafb;         /* gray-50 */
 }
 .prose th,
 .prose td {
-  @apply border border-gray-300 px-4 py-2 align-top;
+  border: 1px solid #d1d5db;         /* gray-300 */
+  padding: 1rem;                      /* px-4 py-2 */
+  vertical-align: top;
 }
 .prose tbody tr:nth-child(even) {
-  @apply bg-gray-50;
+  background-color: #f9fafb;         /* zebra striping */
 }
 .prose table table {
-  @apply w-full mt-2;
+  width: 100%;
+  margin-top: 0.5rem;                /* mt-2 */
 }
 
-/* Code blocks */
+/* Code blocks (Prism/rehype markup preserved) */
 .prose pre {
-  @apply bg-gray-800 text-gray-100 p-4 rounded-lg overflow-x-auto font-mono text-sm;
+  background-color: #1f2937;         /* gray-800 */
+  color: #f3f4f6;                    /* gray-100 */
+  padding: 1rem;                     /* p-4 */
+  border-radius: 0.5rem;             /* rounded-lg */
+  overflow-x: auto;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 0.875rem;               /* text-sm */
+  line-height: 1.25rem;
 }
 .prose code {
-  color: #a5f63a; /* accent color */
+  color: #a5f63a;                    /* accent */
   font-weight: 500;
+}
+
+/* Optional: keep images/wrappers sensible inside prose */
+.prose img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.25rem;
 }
