@@ -1,11 +1,10 @@
 import '../styles/globals.css';
-import '../styles/mdx.css';
 import Layout from '../components/Layout';
 import { MDXProvider } from '@mdx-js/react';
 import CodeBlock from '../components/CodeBlock';
 
-const components = { 
-  pre: (props) => <CodeBlock {...props} />,
+const components = {
+  pre: (props) => <CodeBlock {...props} />, // ✅ Wrap <pre> so Prism markup stays intact
 };
 
 export default function App({ Component, pageProps }) {
