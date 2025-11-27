@@ -13,20 +13,12 @@ export default function Home() {
         </p>
 
         {/* Call-to-Action Button */}
-        <a
-          href="/blog"
-          className="
-            inline-block
-            px-6 py-3
-            bg-sky-600 text-white font-semibold
-            rounded-md
-            hover:bg-sky-700
-            transition-colors duration-200
-            shadow-md
-          "
+        <Link
+         href="/blog"
+         className="inline-block px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-300"
         >
-          Visit Blog →
-        </a>
+          Visit Blog
+        </Link>
       </div>
     </div>
   );
