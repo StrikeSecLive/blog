@@ -11,6 +11,7 @@ import rehypePrism from 'rehype-prism-plus';
 import Layout from '../../components/Layout';
 import MDXComponents from '../../components/MDXComponents';
 import { getPostSlugs, getPostBySlug } from '../../lib/posts';
+import BlogLayout from '../../layouts/BlogLayout';
 
 export async function getStaticPaths() {
   const slugs = getPostSlugs();
