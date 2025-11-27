@@ -59,7 +59,7 @@ export default function BlogPost({ meta, mdxSource }) {
         <link rel="canonical" href={`https://strikesec.dev/blog/${meta.slug}`} />
       </Head>
 
-      <article style={{ padding: '2rem 1rem', maxWidth: 880, margin: '0 auto' }}>
+      <article className="prose dark:prose-invert max-w-none" style={{ padding: '2rem 1rem', maxWidth: 880, margin: '0 auto' }}>
         <header style={{ marginBottom: '1.5rem' }}>
           <nav aria-label="Breadcrumb">
             <Link href="/blog" style={{ color: '#2563eb', textDecoration: 'none', fontWeight: '500' }}>
