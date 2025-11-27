@@ -24,8 +24,7 @@ export async function getStaticProps({ params }) {
       remarkPlugins: [remarkGfm],
       rehypePlugins: [
         rehypeSlug,
-        [rehypeAutolinkHeadings, { behavior: 'append' }],
-        rehypePrism,
+        [rehypeAutolinkHeadings, { behavior: 'append' }],        
       ],
     },
   });
