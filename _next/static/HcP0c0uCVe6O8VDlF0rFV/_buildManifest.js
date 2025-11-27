@@ -3,13 +3,13 @@ self.__BUILD_MANIFEST = {
     "static/chunks/2e6d3bfe1a3daa2d.js"
   ],
   "/_error": [
-    "static/chunks/4626d8288c47ce6b.js"
+    "static/chunks/6024f349a0cbab02.js"
   ],
   "/blog": [
-    "static/chunks/3e1c257ffe144c68.js"
+    "static/chunks/b3778c2552927c22.js"
   ],
   "/blog/[slug]": [
-    "static/chunks/2d78e1a8086083f8.js"
+    "static/chunks/487beb05f938f0e7.js"
   ],
   "__rewrites": {
     "afterFiles": [],
