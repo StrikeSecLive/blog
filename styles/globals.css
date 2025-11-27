@@ -85,3 +85,31 @@ html, body {
   height: auto;
   border-radius: 0.25rem;
 }
+
+.copy-btn {
+  background-color: #a5f63a;
+  color: #2b3742;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 14px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.3s ease;
+}
+
+.copy-btn:hover {
+  background-color: #8ef20b;
+  box-shadow: 0 4px 10px rgba(165, 246, 58, 0.3);
+}
+
+.copy-btn.copied {
+  background-color: #bbf86b;
+}
+
+.copy-btn .icon {
+  fill: currentColor;
+}
