@@ -8,7 +8,7 @@ import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypePrism from 'rehype-prism-plus';
 
 import BlogLayout from '../../layouts/BlogLayout';
-import MDXComponents from '../../components/MDXComponents';
+import MDXComponents from '../../components';
 import { getPostSlugs, getPostBySlug } from '../../lib/posts';
 
 export async function getStaticPaths() {
