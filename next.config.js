@@ -4,5 +4,8 @@ module.exports = withMDX({
   pageExtensions: ['js', 'jsx', 'md', 'mdx'],
   output: 'export',
   trailingSlash: true,
-  images: { unoptimized: true },
+  images: { unoptimized: true },  
+  options: {
+    providerImportSource: '@mdx-js/react', // Enables MDXProvider
+  },
 });
