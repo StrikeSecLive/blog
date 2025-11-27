@@ -48,9 +48,7 @@ export default function BlogPost({ meta, mdxSource }) {
       </Head>
 
       <article className="prose prose-invert max-w-none">
-        <div className="mb-6">
-          /blog← Back to blog
-        </div>
+        <div className="mb-6">Test</div>
 
         <h1 className="mb-2">{title}</h1>
         {dateFmt && <p className="text-sm text-gray-400">{dateFmt}</p>}
