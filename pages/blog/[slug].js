@@ -48,14 +48,25 @@ export default function BlogPost({ meta, mdxSource }) {
   const keywords = Array.isArray(meta.tags) ? meta.tags.join(',') : '';
 
   return (
-    <>
+    <>      
       <Head>
         <title>{title} | StrikeSec</title>
         {description && <meta name="description" content={description} />}
         {keywords && <meta name="keywords" content={keywords} />}
+        
+        {/* Open Graph */}
         <meta property="og:title" content={title} />
         {description && <meta property="og:description" content={description} />}
         <meta property="og:type" content="article" />
+        <meta property="og:url" content={`https://strikesec.dev/blog/${meta.slug}`} />
+        
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={title} />
+        {description && <meta name="twitter:description" content={description} />}
+        
+        {/* Canonical */}
+        <link rel="canonical" href={`https://strikesec.dev/blog/${meta.slug}`} />
       </Head>
 
       <BlogLayout mdxSource={mdxSource} frontMatter={meta} />
