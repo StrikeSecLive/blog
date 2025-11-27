@@ -4,12 +4,10 @@ import MDXComponents from '../components/MDXComponents';
 
 /**
  * BlogLayout
- *
- * - Constrains line length for readability (max-w-3xl).
- * - Adds responsive horizontal padding so content doesn't touch the edges.
- * - Inverts Tailwind Typography in dark mode (dark:prose-invert).
- * - Safely displays front matter (title, date) if provided.
- * - Renders MDX content via MDXRemote using custom MDXComponents.
+ * - Adds responsive horizontal padding and vertical spacing.
+ * - Constrains width for readability (max-w-4xl).
+ * - Applies dark mode inversion (dark:prose-invert).
+ * - Includes sensible typography overrides for links and code.
  */
 export default function BlogLayout({ mdxSource, children, frontMatter }) {
   const title = frontMatter?.title ?? '';
@@ -29,16 +27,18 @@ export default function BlogLayout({ mdxSource, children, frontMatter }) {
       className="
         prose mx-auto
         px-4 sm:px-6 lg:px-8
-        max-w-3xl
+        py-8 sm:py-12
+        max-w-4xl
         dark:prose-invert
         prose-a:text-sky-600 dark:prose-a:text-sky-400
         prose-code:text-pink-600 dark:prose-code:text-pink-400
+        prose-img:rounded-lg
       "
     >
       {/* Title */}
       {title && <h1>{title}</h1>}
 
-      {/* Date (light/dark tone) */}
+      {/* Date */}
       {formattedDate && (
         <p className="text-sm text-gray-500 dark:text-gray-400">{formattedDate}</p>
       )}
@@ -46,7 +46,7 @@ export default function BlogLayout({ mdxSource, children, frontMatter }) {
       {/* MDX content */}
       <MDXRemote {...mdxSource} components={MDXComponents} />
 
-      {/* Any extra children from the page */}
+      {/* Extra children */}
       {children}
     </article>
   );
