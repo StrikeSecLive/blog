@@ -5,8 +5,8 @@ export default function Layout({ children, hideNav = false }) {
         <header style={{ padding: '1rem 2rem', borderBottom: '1px solid #374151', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
            <picture>
-              <source srcSet="/logo-small.png" media="(max-width: 768px)" />
-              <img src="/logo.png" alt="StrikeSec Live Logo" style={{ height: '40px' }} />
+              <source srcSet="/logo-small.png" media="(max-width: 768px)" style={{ height: '100px' }} />
+              <img src="/logo.png" alt="StrikeSec Live Logo" style={{ height: '80px' }} />
            </picture>
           </div>
           <nav style={{ display: 'flex', gap: '1.5rem' }}>
