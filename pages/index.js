@@ -1,4 +1,4 @@
-import VisitBlogButton from '@/components/VisitBlogButtonBrand';
+import VisitBlogButton from '../components/VisitBlogButtonBrand';
 
 export default function Home() {
   return (
