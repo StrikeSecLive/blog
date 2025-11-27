@@ -25,7 +25,7 @@ export async function getStaticProps({ params }) {
       rehypePlugins: [
         rehypeSlug,
         [rehypeAutolinkHeadings, { behavior: 'append' }],
-        [rehypePrism, { ignoreMissing: true }], // ✅ Added option to prevent crashes
+        [rehypePrism, { ignoreMissing: true, showLineNumbers: false }], // ✅ Added option to prevent crashes
       ],
     },
   });
@@ -49,7 +49,7 @@ export default function BlogPost({ meta, mdxSource }) {
 
       <article className="prose prose-invert max-w-none">
         <div className="mb-6">
-          /blog← Back to blog</Link>
+          /blog← Back to blog
         </div>
 
         <h1 className="mb-2">{title}</h1>
