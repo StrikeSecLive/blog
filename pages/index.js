@@ -15,12 +15,12 @@ export default function Home() {
         </p>
 
         {/* Call-to-Action Button */}
-        <Link
-         href="/blog"
-         className="inline-block px-6 py-3 text-lg font-semibold text-[#2b3742] bg-[#a5f63a] rounded-md hover:bg-[#8cd52f] transition-colors duration-300"
-        >
-          Visit Blog
-        </Link>
+          <Link
+        href="/blog"
+        className="inline-flex items-center gap-2 px-6 py-3 text-lg font-semibold text-[#2b3742] bg-[#a5f63a] rounded-md shadow-sm hover:bg-[#8cd52f] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#a5f63a] no-underline transition-colors duration-300"
+      >
+        Visit Blog
+      </Link>
       </div>
     </div>
   );
