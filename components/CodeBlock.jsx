@@ -35,14 +35,7 @@ export default function CodeBlock({ children, className = '', inline = false, ..
       <button
         type="button"
         onClick={copy}        
-        className="
-          absolute top-2 right-2
-          rounded-md bg-gray-700 hover:bg-gray-600
-          text-xs text-white font-medium
-          px-3 py-1
-          transition-colors duration-200
-          shadow-sm
-        "        
+        className="mt-2 rounded bg-gray-700 px-2 py-1 text-xs text-gray-100 hover:bg-gray-600"
         aria-label="Copy code to clipboard"
       >
         {copied ? 'Copied!' : 'Copy'}
