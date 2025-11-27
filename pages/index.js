@@ -16,7 +16,14 @@ export default function Home() {
         <a
           href="/blog"
           className="
-</div>
+            inline-block
+            px-6 py-3
+            bg-sky-600 text-white font-semibold
+            rounded-md
+            hover:bg-sky-700
+            transition-colors duration-200
+          "
+        </div>
     </div>
   );
 }
