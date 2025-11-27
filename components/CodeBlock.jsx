@@ -32,14 +32,25 @@ export default function CodeBlock({ children, className = '', inline = false, ..
       <pre ref={preRef} className={mergedClasses}>
         <code className={prismClass}>{children}</code>
       </pre>
-      <button
-        type="button"
-        onClick={copy}        
-        className="mt-2 rounded bg-gray-700 px-2 py-1 text-xs text-gray-100 hover:bg-gray-600"
-        aria-label="Copy code to clipboard"
+      
+    <button
+      type="button"
+      onClick={copy}
+      className={`copy-btn ${copied ? 'copied' : ''}`}
+      aria-label="Copy code to clipboard"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        width="16"
+        height="16"
+        className="icon"
       >
-        {copied ? 'Copied!' : 'Copy'}
-      </button>
+        <path d="M19 21H9V7h10v14zm-2-2V9H11v10h6zM5 3h10v2H5v14H3V5h2V3z" />
+      </svg>
+      {copied ? 'Copied!' : 'Copy Code'}
+    </button>
+
     </div>
   );
 }
