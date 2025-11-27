@@ -1,3 +1,4 @@
+
 import { useRef, useState } from 'react';
 
 export default function CodeBlock({ children, className = '', inline = false, ...rest }) {
@@ -16,7 +17,6 @@ export default function CodeBlock({ children, className = '', inline = false, ..
     }
   };
 
-  // Determine language class for Prism (optional)
   const language = className?.replace(/language-/, '') || 'text';
   const prismClass = `language-${language}`;
   const baseClasses =
@@ -24,7 +24,6 @@ export default function CodeBlock({ children, className = '', inline = false, ..
   const mergedClasses = className ? `${baseClasses} ${className}` : baseClasses;
 
   if (inline) {
-    // Render inline code without a container
     return <code className={prismClass} {...rest}>{children}</code>;
   }
 
