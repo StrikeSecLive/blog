@@ -18,7 +18,7 @@ import { useRef, useState } from 'react';
    return (
      <div className="relative my-4">
        <pre ref={preRef} className={mergedClasses}>
-         {children}
+         <code>{children}</code>
        </pre>
        <button
          onClick={copy}
