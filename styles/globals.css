@@ -4,6 +4,9 @@
 @tailwind components;
 @tailwind utilities;
 
+html, body { height: 100%; }
+body { background-color: #2b3742; color: white; font-family: sans-serif; }
+
 /* ---------------------- */
 /* MDX / Blog Typography  */
 /* ---------------------- */
