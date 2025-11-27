@@ -1,7 +1,7 @@
 import { MDXRemote } from 'next-mdx-remote';
 import MDXComponents from '../components/MDXComponents';
 
-export default function BlogLayout({ mdxSource }) {
+export default function BlogLayout({ mdxSource, children, frontMatter }) {
   return (
     <main className="min-h-screen bg-gray-900 text-gray-100">
       <div className="mx-auto max-w-4xl px-6 py-10">
