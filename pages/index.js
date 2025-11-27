@@ -1,9 +1,22 @@
 export default function Home() {
   return (
-    <section className="text-center py-16">
-      <h1 className="text-4xl font-bold mb-4">Welcome to StrikeSec Live</h1>
-      <p className="text-lg mb-6">Cybersecurity resources, certification guides, and hands-on labs.</p>
-      <a href="/blog" className="bg-accent text-navy font-semibold px-6 py-3 rounded hover:bg-green-400">Browse Blog</a>
-    </section>
+    <div className="min-h-screen bg-white dark:bg-gray-950 flex items-center justify-center px-4 sm:px-6 lg:px-8">
+      <div className="text-center max-w-2xl">
+        {/* Hero Heading */}
+        <h1 className="text-4xl sm:text-5xl font-extrabold text-gray-900 dark:text-gray-100 mb-4">
+          Welcome to <span className="text-sky-600 dark:text-sky-400">StrikeSec</span>
+        </h1>
+
+        {/* Subheading */}
+        <p className="text-lg text-gray-600 dark:text-gray-400 mb-8">
+          Learn, practice, and master penetration testing tools and techniques.
+        </p>
+
+        {/* Call-to-Action Button */}
+        <a
+          href="/blog"
+          className="
+</div>
+    </div>
   );
 }
