@@ -12,7 +12,6 @@ export default function CodeBlock({ children, className = '' }) {
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch (e) {
-      // Non-async fallback (older browsers)
       const selection = window.getSelection();
       const range = document.createRange();
       range.selectNodeContents(preRef.current);
@@ -29,9 +28,8 @@ export default function CodeBlock({ children, className = '' }) {
     <div className="relative my-4">
       <pre
         ref={preRef}
-        className={`bg-gray-800 text-gray-100 p-4 rounded-lg overflow-x-auto font-mono text-sm ${className}`}
+        className={\`bg-gray-800 text-gray-100 p-4 rounded-lg overflow-x-auto font-mono text-sm \${className}\`}
       >
-        {/* Keep children as-is so Prism classes & markup remain */}
         {children}
       </pre>
 
@@ -44,3 +42,4 @@ export default function CodeBlock({ children, className = '' }) {
       </button>
     </div>
   );
+}
