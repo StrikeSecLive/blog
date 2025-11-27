@@ -1,3 +1,4 @@
+
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -13,10 +14,7 @@ import { getPostSlugs, getPostBySlug } from '../../lib/posts';
 
 export async function getStaticPaths() {
   const slugs = getPostSlugs();
-  return {
-    paths: slugs.map((slug) => ({ params: { slug } })),
-    fallback: false,
-  };
+  return { paths: slugs.map((slug) => ({ params: { slug } })), fallback: false };
 }
 
 export async function getStaticProps({ params }) {
@@ -31,85 +29,47 @@ export async function getStaticProps({ params }) {
       ],
     },
   });
-
-  return {
-    props: {
-      meta,
-      mdxSource,
-    },
-  };
+  return { props: { meta, mdxSource } };
 }
 
 export default function BlogPost({ meta, mdxSource }) {
-  const title = meta.title || meta.slug;
-  const dateFmt = meta.date
-    ? new Date(meta.date).toLocaleDateString(undefined, {
-        year: 'numeric',
-        month: 'short',
-        day: 'numeric',
-      })
-    : null;
+  const title = meta.title ?? meta.slug;
+  const dateFmt =
+    meta.date ? new Date(meta.date).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' }) : null;
 
   return (
-    <Layout hideNav>
+    <Layout>
       <Head>
         <title>{title} · StrikeSec</title>
         {meta.excerpt && <meta name="description" content={meta.excerpt} />}
-        {meta.tags && <meta name="keywords" content={meta.tags.join(',')} />}
-        <link rel="canonical" href={`https://strikesec.dev/blog/${meta.slug}`} />
+        {Array.isArray(meta.tags) && meta.tags.length > 0 && (
+          <meta name="keywords" content={meta.tags.join(',')} />
+        )}
       </Head>
 
-      <article className="prose dark:prose-invert max-w-none" style={{ padding: '2rem 1rem', maxWidth: 880, margin: '0 auto' }}>
-        <header style={{ marginBottom: '1.5rem' }}>
-          <nav aria-label="Breadcrumb">
-            <Link href="/blog" style={{ color: '#2563eb', textDecoration: 'none', fontWeight: '500' }}>
-              <span aria-hidden="true">←</span> Back to blog
-            </Link>
-          </nav>
-
-          <h1 style={{ margin: '0.75rem 0', fontSize: '2rem', fontWeight: 'bold' }}>{title}</h1>
-
-          {dateFmt && (
-            <time dateTime={meta.date} style={{ color: '#6b7280', fontSize: '0.875rem' }}>
-              {dateFmt}
-            </time>
-          )}
-
-          {Array.isArray(meta.tags) && meta.tags.length > 0 && (
-            <div style={{ marginTop: '0.5rem', display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
-              {meta.tags.map((tag) => (
-                <span
-                  key={tag}
-                  style={{
-                    fontSize: '0.75rem',
-                    background: '#eef2ff',
-                    color: '#3730a3',
-                    borderRadius: '999px',
-                    padding: '0.25rem 0.5rem',
-                  }}
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
-          )}
-
-          {meta.thumbnail && (
-            <div style={{ position: 'relative', width: '100%', aspectRatio: '16/9', marginTop: '1rem' }}>
-              <Image
-                src={meta.thumbnail}
-                alt={title}
-                fill
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 800px"
-                style={{ objectFit: 'cover', borderRadius: '12px' }}
-              />
-            </div>
-          )}
-        </header>
-
-        <div className="mdx-content">
-          <MDXRemote {...mdxSource} components={MDXComponents} />
+      <article className="prose prose-invert max-w-none">
+        <div className="mb-6">
+          /blog← Back to blog</Link>
         </div>
+
+        <h1 className="mb-2">{title}</h1>
+        {dateFmt && <p className="text-sm text-gray-400">{dateFmt}</p>}
+
+        {Array.isArray(meta.tags) && meta.tags.length > 0 && (
+          <div className="mt-2 flex gap-2 flex-wrap">
+            {meta.tags.map((tag) => (
+              <span key={tag} className="text-xs bg-gray-800 text-gray-200 px-2 py-1 rounded">{tag}</span>
+            ))}
+          </div>
+        )}
+
+        {meta.thumbnail && (
+          <div className="my-6">
+            <Image src={meta.thumbnail} alt={title} width={1200} height={630} className="rounded" />
+          </div>
+        )}
+
+        <MDXRemote {...mdxSource} components={MDXComponents} />
       </article>
     </Layout>
   );
