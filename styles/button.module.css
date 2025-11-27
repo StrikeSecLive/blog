@@ -1,4 +1,4 @@
-.btn-primary {
+.btnPrimary {
   display: inline-flex;               /* makes it a button, not inline text */
   align-items: center;
   justify-content: center;
@@ -12,13 +12,13 @@
   text-decoration: none;              /* kill underline from global styles */
   transition: background-color 200ms ease, transform 120ms ease;
 }
-.btn-primary:hover {
+.btnPrimary:hover {
   background-color: #8cd52f;          /* hover */
 }
-.btn-primary:focus {
+.btnPrimary:focus {
   outline: none;
   box-shadow: 0 0 0 3px rgba(165,246,58,0.35);
 }
-.btn-primary:active {
+.btnPrimary:active {
   transform: translateY(1px);
 }
