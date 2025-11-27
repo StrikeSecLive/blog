@@ -109,12 +109,12 @@ tags: ["PenTest+", "PT0-003", "CompTIA", "Offensive Security", "Scripting"]
   nmap -sV -p 80,443 192.168.1.10
   ```
 - **Output Example:**
-  ```
+  ```text
   PORT    STATE SERVICE VERSION
   80/tcp  open  http    Apache httpd 2.4.41
   443/tcp open  https   OpenSSL 1.1.1
   ```
-  ```
+  ```text
   
   | ICMP Code | Meaning                                   | Typical Cause                                         | Nmap Interpretation              |
   |-----------|-------------------------------------------|-------------------------------------------------------|----------------------------------|
@@ -180,7 +180,7 @@ tags: ["PenTest+", "PT0-003", "CompTIA", "Offensive Security", "Scripting"]
   whois tryhackme.com
   ```
 - **Output Example:**
-  ```
+  ```text
    Domain Name: TRYHACKME.COM
    Registry Domain ID: 2282723194_DOMAIN_COM-VRSN
    Registrar WHOIS Server: whois.namecheap.com
@@ -474,7 +474,7 @@ tags: ["PenTest+", "PT0-003", "CompTIA", "Offensive Security", "Scripting"]
   tcpdump -i eth0 port 80
   ```
 - **Output Example:**
-  ```
+  ```text
   10:15:23 IP 192.168.1.5 > 192.168.1.10: HTTP GET /index.html
   ```
 
@@ -633,7 +633,7 @@ tags: ["PenTest+", "PT0-003", "CompTIA", "Offensive Security", "Scripting"]
   
 - **Input Example:**  
   *(Web interface or API)*  
-  ```
+  ```text
   https://web.archive.org/web/*/example.com/*
   ```
 - **Output Example:**
@@ -719,7 +719,7 @@ tags: ["PenTest+", "PT0-003", "CompTIA", "Offensive Security", "Scripting"]
 - **Use Case:** Enumerate emails and patterns for a target domain (useful for credential formats & phishing simulations).
   
 - **Input Example:**  
-  ```
+  ```bash
   hunter.io search --domain example.com
   ```
 - **Output Example:**  
@@ -741,7 +741,7 @@ tags: ["PenTest+", "PT0-003", "CompTIA", "Offensive Security", "Scripting"]
   
 - **Input Example:**  
   *(Web UI or API)*  
-  ```
+  ```bash
   curl -H "X-API-Key: [REDACTED]" https://api.dnsdumpster.com/domain/kali.org
   ```
 - **Output Example:**  [Images](#img2-dnsdumpster)
@@ -876,11 +876,11 @@ tags: ["PenTest+", "PT0-003", "CompTIA", "Offensive Security", "Scripting"]
   
 - **Input Example:**  
   *(Web UI or API)*  
-  ```
+  ```text
   Search SSID: "CorpWiFi"
   ```
 - **Output Example:**  
-  ```  
+  ```text
   SSID: CorpWiFi
   BSSID: AA:BB:CC:DD:EE:FF
   Last seen: 2025-03-14
@@ -897,7 +897,7 @@ tags: ["PenTest+", "PT0-003", "CompTIA", "Offensive Security", "Scripting"]
   
 - **Input Example:**  
   *(GUI-based tool)*  
-  ```
+  ```text
   Scan local Wi-Fi networks
   ```
 - **Output Example:**  [Images](#img6-inssider)
