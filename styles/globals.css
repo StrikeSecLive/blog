@@ -6,12 +6,18 @@
 html, body { height: 100%; }
 body { background-color: #2b3742; color: white; font-family: sans-serif; }
 
-/* Anchor links */
 .prose .anchor {
-  @apply absolute -ml-6 pl-2 text-gray-400 no-underline opacity-0 transition;
+  position: absolute;
+  margin-left: -1.5rem; /* -ml-6 equivalent */
+  padding-left: 0.5rem; /* pl-2 equivalent */
+  color: #9ca3af; /* text-gray-400 */
+  text-decoration: none;
+  opacity: 0;
+  transition: opacity 0.2s;
 }
+
 .prose *:hover > .anchor {
-  @apply opacity-100;
+  opacity: 1;
 }
 
 /* Links (raw CSS for accent color to avoid @apply error) */
