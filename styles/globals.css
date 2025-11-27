@@ -1,32 +1,46 @@
 @import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 html, body { height: 100%; }
 body { background-color: #2b3742; color: white; font-family: sans-serif; }
 
-/* Anchor links (rehype-autolink-headings) */
+/* Anchor links for headings */
 .prose .anchor {
   @apply absolute -ml-6 pl-2 text-gray-400 no-underline opacity-0 transition;
 }
 .prose *:hover > .anchor {
   @apply opacity-100;
 }
+
+/* Links */
 .prose a {
   @apply text-accent hover:text-green-500 underline transition;
 }
 
-/* Tables & nested tables */
+/* Tables */
 .prose table {
   @apply w-full border-collapse overflow-hidden rounded-lg;
 }
 .prose thead {
   @apply bg-gray-50;
 }
-.prose th, .prose td {
+.prose th,
+.prose td {
   @apply border border-gray-300 px-4 py-2 align-top;
 }
 .prose tbody tr:nth-child(even) {
   @apply bg-gray-50;
 }
 .prose table table {
-  @apply w-full mt-2; /* nested tables */
+  @apply w-full mt-2;
+}
+
+/* Code blocks */
+.prose pre {
+  @apply bg-gray-800 text-gray-100 p-4 rounded-lg overflow-x-auto font-mono text-sm;
+}
+.prose code {
+  @apply text-accent font-medium;
 }
