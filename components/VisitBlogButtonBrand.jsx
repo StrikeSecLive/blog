@@ -1,9 +1,9 @@
 import Link from 'next/link';
-import '../styles/button.css';
+import styles from '@/styles/button.module.css';
 
-export default function VisitBlogLink() {
+export default function VisitBlogButton() {
   return (
-    <Link href="/blog">
+    <Link href="/blog" className={styles.btnPrimary}>
       Visit Blog
     </Link>
   );
