@@ -37,7 +37,7 @@ export default function Layout({ children, hideNav = false }) {
 
       {!hideNav && (
         <footer style={{ padding: '1rem', borderTop: '1px solid #374151', textAlign: 'center', color: '#9ca3af', fontSize: '0.875rem' }}>
-          © {new Date().getFullYear()} StrikeSec Live
+          © {new Date().getFullYear()} StrikeSecLive
         </footer>
       )}
     </div>
