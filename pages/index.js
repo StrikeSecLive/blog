@@ -4,7 +4,7 @@ export default function Home() {
       <div className="text-center max-w-2xl">
         {/* Hero Heading */}
         <h1 className="text-4xl sm:text-5xl font-extrabold text-gray-900 dark:text-gray-100 mb-4">
-          Welcome to <span className="text-sky-600 dark:text-sky-400">StrikeSecLive</span>
+          Welcome to <span className="text-sky-600 dark:text-sky-400">StrikeSec.dev</span>
         </h1>
 
         {/* Subheading */}
