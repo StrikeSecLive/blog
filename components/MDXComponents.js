@@ -1,39 +1,30 @@
 
 // components/MDXComponents.js
 import React from 'react';
+import Link from 'next/link';
+import CodeBlock from './CodeBlock';
 
 const A = (props) => {
-  const isExternal = typeof props.href === 'string' && props.href.startsWith('http');
-  return (
-    <a
-      {...props}
-      target={isExternal ? '_blank' : undefined}
-      rel={isExternal ? 'noopener noreferrer' : undefined}
-      style={{ color: '#2563eb' }}
-    />
-  );
+  const href = props.href ?? '';
+  const isExternal = typeof href === 'string' && href.startsWith('http');
+  if (isExternal) {
+    return (
+      <a href={href} target="_blank" rel="noopener noreferrer" {...props}>
+        {props.children}
+      </a>
+    );
+  }
+  return <Link href={href} {...props}>{props.children}</Link>;
 };
 
-const Pre = (props) => (
-  <pre
-    {...props}
-    style={{
-      background: '#0b1021',
-      color: '#e6edf3',
-      padding: '1rem',
-      borderRadius: '8px',
-      overflowX: 'auto',
-    }}
-  />
-);
+const Pre = (props) => <CodeBlock {...props} />;
 
-const Img = (props) => (
-  <img {...props} style={{ maxWidth: '100%', height: 'auto', borderRadius: 8 }} />
-);
+const Img = (props) => <img {...props} />;
 
 const MDXComponents = {
   a: A,
   pre: Pre,
+  code: (props) => <CodeBlock {...props} />,
   img: Img,
 };
 
