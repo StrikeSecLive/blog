@@ -1,4 +1,4 @@
-@import "tailwindcss";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -14,7 +14,7 @@ body { background-color: #2b3742; color: white; font-family: sans-serif; }
   @apply opacity-100;
 }
 
-/* Links (raw CSS for accent color) */
+/* Links (raw CSS for accent color to avoid @apply error) */
 .prose a {
   color: #a5f63a; /* accent */
   text-decoration: underline;
@@ -50,4 +50,3 @@ body { background-color: #2b3742; color: white; font-family: sans-serif; }
   color: #a5f63a; /* accent color */
   font-weight: 500;
 }
-
