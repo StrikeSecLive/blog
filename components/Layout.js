@@ -25,8 +25,15 @@ export default function Layout({ children, hideNav = false }) {
           </nav>
         </header>
       )}
-
-      <main style={{ flex: 1, maxWidth: '768px', margin: '0 auto', padding: '1rem' }}>{children}</main>
+        
+      <main style={{
+        flex: 1,
+        maxWidth: '1028px',
+        margin: '0 auto',
+        padding: '1rem'
+      }}>
+      {children}
+      </main>
 
       {!hideNav && (
         <footer style={{ padding: '1rem', borderTop: '1px solid #374151', textAlign: 'center', color: '#9ca3af', fontSize: '0.875rem' }}>
