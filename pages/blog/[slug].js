@@ -7,9 +7,9 @@ import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypePrism from 'rehype-prism-plus';
 
-import BlogLayout from '@/layouts/BlogLayout';
-import MDXComponents from '@/components/MDXComponents';
-import { getPostSlugs, getPostBySlug } from '@/lib/posts';
+import BlogLayout from '../../layouts/BlogLayout';
+import MDXComponents from '../../components/MDXComponents';
+import { getPostSlugs, getPostBySlug } from '../../lib/posts';
 
 export async function getStaticPaths() {
   const slugs = getPostSlugs();
