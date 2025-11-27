@@ -28,7 +28,7 @@ export default function CodeBlock({ children, className = '' }) {
     <div className="relative my-4">
       <pre
         ref={preRef}
-        className={'bg-gray-800 text-gray-100 p-4 rounded-lg overflow-x-auto font-mono text-sm ${className}'}>
+        className={"bg-gray-800 text-gray-100 p-4 rounded-lg overflow-x-auto font-mono text-sm ${className}"}>
         {children}
       </pre>
 
