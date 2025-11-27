@@ -1,5 +1,4 @@
 import Head from 'next/head';
-import { MDXRemote } from 'next-mdx-remote';
 import { serialize } from 'next-mdx-remote/serialize';
 import remarkGfm from 'remark-gfm';
 import rehypeSlug from 'rehype-slug';
@@ -54,6 +53,9 @@ export default function BlogPost({ meta, mdxSource }) {
         <title>{title} | StrikeSec</title>
         {description && <meta name="description" content={description} />}
         {keywords && <meta name="keywords" content={keywords} />}
+        <meta property="og:title" content={title} />
+        {description && <meta property="og:description" content={description} />}
+        <meta property="og:type" content="article" />
       </Head>
 
       <BlogLayout mdxSource={mdxSource} frontMatter={meta} />
