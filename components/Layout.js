@@ -1,4 +1,3 @@
-
 // components/Layout.js
 import Head from 'next/head';
 
@@ -33,7 +32,7 @@ export default function Layout({ children, hideNav = false }) {
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
             <picture>
-              /logo-small.png
+              <source srcSet="/logo-small.png" media="(max-width: 768px)" />
               <img
                 src="/logo.png"
                 alt="StrikeSec Live Logo"
@@ -41,15 +40,33 @@ export default function Layout({ children, hideNav = false }) {
                   height: 'auto',
                   maxHeight: '56px',
                   width: 'auto',
-                    }}
+                  display: 'block',
+                }}
+              />
+            </picture>
+          </div>
+
+          <nav
+            style={{
+              display: 'flex',
+              gap: '1rem',
+              flexWrap: 'wrap',
+              wordBreak: 'break-word',
+            }}
           >
-            / (e.currentTarget.style.color = '#a5f63a')}
+            <a
+              href="/"
+              style={{ textDecoration: 'none', color: '#fff', fontWeight: 500 }}
+              onMouseOver={(e) => (e.currentTarget.style.color = '#a5f63a')}
               onMouseOut={(e) => (e.currentTarget.style.color = '#fff')}
             >
               Home
             </a>
 
-            /blog (e.currentTarget.style.color = '#a5f63a')}
+            <a
+              href="/blog"
+              style={{ textDecoration: 'none', color: '#fff', fontWeight: 500 }}
+              onMouseOver={(e) => (e.currentTarget.style.color = '#a5f63a')}
               onMouseOut={(e) => (e.currentTarget.style.color = '#fff')}
             >
               Blog
@@ -60,7 +77,14 @@ export default function Layout({ children, hideNav = false }) {
               target="_blank"
               rel="noopener noreferrer"
               style={{ textDecoration: 'none', color: '#fff', fontWeight: 500 }}
-              onMouseOver={(e)    )}
+              onMouseOver={(e) => (e.currentTarget.style.color = '#a5f63a')}
+              onMouseOut={(e) => (e.currentTarget.style.color = '#fff')}
+            >
+              GitHub
+            </a>
+          </nav>
+        </header>
+      )}
 
       <main
         style={{
