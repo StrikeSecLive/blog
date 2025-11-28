@@ -124,3 +124,17 @@ img {
 .copy-btn .icon {
   fill: currentColor;
 }
+
+.post-tags {
+  margin: 0.5rem 0;
+}
+.tag {
+  display: inline-block;
+  background: #eee;
+  color: #333;
+  padding: 0.3rem 0.6rem;
+  margin-right: 0.4rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+}
+
