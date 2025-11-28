@@ -40,7 +40,7 @@ export default function BlogIndex({ posts }) {
   return (
     <main style={{ padding: '2rem' }}>
       <h1 style={{ marginBottom: '1rem' }}>Blog</h1>
-      <p style={{ color: '#666', marginBottom: '2rem' }}>
+      <p style={{ color: '#fff', marginBottom: '2rem' }}>
         Latest posts, write-ups, and notes.
       </p>
 
