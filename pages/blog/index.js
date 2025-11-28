@@ -102,7 +102,7 @@ export default function BlogIndex({ posts }) {
                   </time>
                 )}
                 {post.excerpt && (
-                  <p style={{ marginTop: '0.5rem', color: '#4b5563' }}>
+                  <p style={{ marginTop: '0.5rem', color: '#fff' }}>
                     {post.excerpt}
                   </p>
                 )}
