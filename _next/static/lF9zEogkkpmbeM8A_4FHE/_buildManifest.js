@@ -6,7 +6,7 @@ self.__BUILD_MANIFEST = {
     "static/chunks/9e29728f205253e2.js"
   ],
   "/blog": [
-    "static/chunks/b2b3519d1e040045.js"
+    "static/chunks/80a76cc43f5496e0.js"
   ],
   "/blog/[slug]": [
     "static/chunks/e7238bf589adbdaa.js"
