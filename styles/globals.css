@@ -1,3 +1,4 @@
+
 /* Tailwind entry points */
 @tailwind base;
 @tailwind components;
@@ -10,6 +11,13 @@ html, body {
     height: 100%;
     width: 100%;
     overflow-x: hidden; /* Prevent horizontal scroll */
+    overflow-y: auto;   /* Allow vertical scroll */
+    scrollbar-width: none; /* Hide scrollbar in Firefox */
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+    display: none; /* Hide scrollbar in Chrome/Safari */
 }
 
 *, *::before, *::after {
@@ -73,8 +81,8 @@ img {
   color: #f3f4f6;
   padding: 1rem;
   border-radius: 0.5rem;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
+  overflow-x: auto;                  /* Keep inner scrollbar */
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling on mobile */
   max-width: 100%;
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   font-size: 0.875rem;
