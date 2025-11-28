@@ -106,23 +106,29 @@ export default function BlogPost({ frontMatter, mdxSource }) {
       />
 
       {/* Back to Top Button */}
-      {showButton && (<button
-        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-        style={{
-          position: 'fixed',
-          bottom: '20px',
-          right: '20px',
-          padding: '10px 15px',
-          backgroundColor: '#0070f3',
-          color: '#fff',
-          border: 'none',
-          borderRadius: '5px',
-          cursor: 'pointer',
-          zIndex: 9999
-        }}
-      >
-        ↑ Back to Top
-      </button>)}
+      
+      {showButton && (
+        <button
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          style={{
+            position: 'fixed',
+            bottom: '20px',
+            right: '20px',
+            padding: '10px 15px',
+            backgroundColor: '#0070f3',
+            color: '#fff',
+            border: 'none',
+            borderRadius: '5px',
+            cursor: 'pointer',
+            zIndex: 9999,
+            opacity: showButton ? 1 : 0,
+            transition: 'opacity 0.5s ease-in-out'
+          }}
+        >
+          ↑ Back to Top
+        </button>
+      )}
+
 
       <BlogLayout mdxSource={mdxSource} frontMatter={frontMatter} />
     </>
