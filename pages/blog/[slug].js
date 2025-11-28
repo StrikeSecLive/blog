@@ -50,7 +50,7 @@ export default function BlogPost({ frontMatter, mdxSource }) {
   return (
     <>
       <Head>
-        <title>{title} | StrikeSec</title>
+        <title>{title} | StrikeSecLive</title>
         {description && <meta name="description" content={description} />}
         {keywords && <meta name="keywords" content={keywords} />}
         <meta property="og:title" content={title} />
