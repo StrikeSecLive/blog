@@ -16,8 +16,10 @@ export default function Layout({ children, hideNav = false }) {
       <Head>
         {/* Proper responsive viewport */}
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        {/* Add favicon */}
-        <link rel="icon" href="/favicon.ico" />
+        {/* Favicons for different devices */}
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="196x196" href="/favicon-196x196.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180x180.png" />
       </Head>
 
       {!hideNav && (
