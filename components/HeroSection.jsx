@@ -24,6 +24,28 @@ export default function HeroSection() {
   <div className="absolute bottom-20 right-20 w-24 h-24 bg-[#a5f63a] rounded-full opacity-10 blur-2xl"></div>
 
   {/* Content */}
+  
+<div style={{ textAlign: 'center', padding: '2rem' }}>
+  <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            zIndex: -1,
+          }}
+        >
+          <source src="/strikesecdev-landing.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+</div>
+
   <div className="relative z-10 max-w-3xl mx-auto py-20 px-6">
     <h1 className="text-4xl md:text-5xl font-bold text-white">Welcome to StrikeSec.dev</h1>
     <p className="mt-4 text-lg text-gray-300">
