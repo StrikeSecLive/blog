@@ -4,12 +4,30 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ---------------------- */
+/* Global Layout & Reset  */
+/* ---------------------- */
+
 html, body {
     background-color: #2b3742 !important;
-    color: white; font-family: sans-serif;
-    height: 100%; 
+    color: white;
+    font-family: sans-serif;
+    height: 100%;
+    width: 100%;                /* ✅ Prevent overflow */
+    overflow-x: hidden;         /* ✅ Stop horizontal scroll on mobile */
 }
 
+/* Ensure predictable sizing */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+/* Make images responsive globally */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
 
 /* ---------------------- */
 /* MDX / Blog Typography  */
@@ -52,7 +70,7 @@ html, body {
 .prose th,
 .prose td {
   border: 1px solid #d1d5db;         /* gray-300 */
-  padding: 1rem;                      /* px-4 py-2 */
+  padding: 1rem;                     /* px-4 py-2 */
   vertical-align: top;
 }
 .prose tbody tr:nth-child(even) {
@@ -69,7 +87,9 @@ html, body {
   color: #f3f4f6;                    /* gray-100 */
   padding: 1rem;                     /* p-4 */
   border-radius: 0.5rem;             /* rounded-lg */
-  overflow-x: auto;
+  overflow-x: auto;                  /* ✅ Horizontal scroll for long lines */
+  -webkit-overflow-scrolling: touch; /* ✅ Smooth scroll on mobile */
+  max-width: 100%;                   /* ✅ Prevent layout blowout */
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   font-size: 0.875rem;               /* text-sm */
   line-height: 1.25rem;
@@ -77,6 +97,7 @@ html, body {
 .prose code {
   color: #a5f63a;                    /* accent */
   font-weight: 500;
+  word-break: normal;                /* ✅ Avoid breaking code weirdly */
 }
 
 /* Optional: keep images/wrappers sensible inside prose */
@@ -85,6 +106,10 @@ html, body {
   height: auto;
   border-radius: 0.25rem;
 }
+
+/* ---------------------- */
+/* Buttons & Utilities    */
+/* ---------------------- */
 
 .copy-btn {
   background-color: #a5f63a;
