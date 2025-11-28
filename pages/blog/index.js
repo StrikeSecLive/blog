@@ -66,20 +66,13 @@ export default function BlogIndex({ posts }) {
               href={`/blog/${post.slug}`}
               style={{ textDecoration: 'none', color: 'inherit' }}
             >
-              <div
-                style={{
-                  position: 'relative',
-                  width: '100%',
-                  aspectRatio: '16/9',
-                  background: '#f3f4f6',
-                }}
-              >
+              <div className="relative w-full aspect-[16/9] bg-gray-100 rounded-xl overflow-hidden">
                 <Image
                   src={post.thumbnail}
                   alt={post.title}
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  style={{ objectFit: 'cover' }}
+                  className="object-cover"
                 />
               </div>
               <div style={{ padding: '1rem' }}>
