@@ -1,3 +1,5 @@
+
+// components/Layout.js
 import Head from 'next/head';
 
 export default function Layout({ children, hideNav = false }) {
@@ -13,7 +15,7 @@ export default function Layout({ children, hideNav = false }) {
       }}
     >
       <Head>
-        {/* ✅ Proper responsive viewport */}
+        {/* Proper responsive viewport */}
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
 
@@ -26,48 +28,48 @@ export default function Layout({ children, hideNav = false }) {
             alignItems: 'center',
             justifyContent: 'space-between',
             gap: '0.75rem',
-            flexWrap: 'wrap', // ✅ allow wrapping on small screens
+            flexWrap: 'wrap', // allow wrapping on small screens
           }}
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
             <picture>
-              {/* style on <source> is ignored; use sizes and CSS on <img> */}
               /logo-small.png
               <img
                 src="/logo.png"
                 alt="StrikeSec Live Logo"
                 style={{
                   height: 'auto',
-                  maxHeight: '56px',  // ✅ smaller on mobile
+                  maxHeight: '56px',
                   width: 'auto',
-                }}
-              }}
+                    }}
           >
-            <a
-             e.color = '#a5f63a')}
-              onMouseOut={(e) => (e.target.style.color = '#fff')}
+            / (e.currentTarget.style.color = '#a5f63a')}
+              onMouseOut={(e) => (e.currentTarget.style.color = '#fff')}
             >
               Home
             </a>
-            <a
-              href="/blog"
-                          onMouseOut={(e) => (e.target.style.color = '#fff')}
+
+            /blog (e.currentTarget.style.color = '#a5f63a')}
+              onMouseOut={(e) => (e.currentTarget.style.color = '#fff')}
             >
               Blog
             </a>
+
             <a
               href="https://github.com/StrikeSecLive"
               target="_blank"
               rel="noopener noreferrer"
               style={{ textDecoration: 'none', color: '#fff', fontWeight: 500 }}
-              onMouseOver={(e)<main
+              onMouseOver={(e)    )}
+
+      <main
         style={{
           flex: 1,
           maxWidth: '1028px',
-          width: '100%',       // ✅ ensure full-width on mobile
+          width: '100%', // ensure full-width on mobile
           margin: '0 auto',
           padding: '1rem',
-          boxSizing: 'border-box', // ✅ include padding in width calc
+          boxSizing: 'border-box',
         }}
       >
         {children}
