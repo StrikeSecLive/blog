@@ -16,6 +16,26 @@ export default function Layout({ children, hideNav = false }) {
       <Head>
         {/* Proper responsive viewport */}
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        {/* SEO Meta Tags */}
+        <meta name="title" content="StrikeSecLive Development | Penetration Testing & Security Tools" />
+        <meta name="description" content="Explore StrikeSecLive's development hub at strikesec.dev. Learn penetration testing techniques, security best practices, and advanced tools for ethical hacking." />
+        <meta name="keywords" content="StrikeSecLive, penetration testing, ethical hacking, security tools, strikesec.dev, cybersecurity, development" />
+        <meta name="author" content="StrikeSecLive" />
+      
+        {/* Open Graph for social sharing */}
+        <meta property="og:title" content="StrikeSecLive Development" />
+        <meta property="og:description" content="Your hub for penetration testing tools, security resources, and development insights." />
+        <meta property="og:url" content="https://strikesec.dev" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://strikesec.dev/logo.png" />
+      
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="StrikeSecLive Development" />
+        <meta name="twitter:description" content="Penetration testing tools and security resources for developers." />
+        <meta name="twitter:image" content="https://strikesec.dev/logo.png" />
+      
         {/* Favicons for different devices */}
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="196x196" href="/favicon-196x196.png" />
