@@ -48,6 +48,7 @@ export default function BlogPost({ frontMatter, mdxSource }) {
   const description = frontMatter.excerpt ?? '';
   const keywords = Array.isArray(frontMatter.tags) ? frontMatter.tags.join(',') : '';
 
+  const [scrollProgress, setScrollProgress] = useState(0);
   const [showButton, setShowButton] = useState(false);
 
   useEffect(() => {
@@ -57,20 +58,6 @@ export default function BlogPost({ frontMatter, mdxSource }) {
       const progress = (scrollTop / docHeight) * 100;
       setScrollProgress(progress);
       setShowButton(scrollTop > 100);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-
-  const [scrollProgress, setScrollProgress] = useState(0);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollTop = window.scrollY;
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const progress = (scrollTop / docHeight) * 100;
-      setScrollProgress(progress);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
@@ -106,7 +93,6 @@ export default function BlogPost({ frontMatter, mdxSource }) {
       />
 
       {/* Back to Top Button */}
-      
       {showButton && (
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
@@ -128,7 +114,6 @@ export default function BlogPost({ frontMatter, mdxSource }) {
           ↑ Back to Top
         </button>
       )}
-
 
       <BlogLayout mdxSource={mdxSource} frontMatter={frontMatter} />
     </>
