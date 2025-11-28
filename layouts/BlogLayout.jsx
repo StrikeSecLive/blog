@@ -12,6 +12,7 @@ import MDXComponents from '../components/MDXComponents';
 export default function BlogLayout({ mdxSource, children, frontMatter }) {
   const title = frontMatter?.title ?? '';
   const date = frontMatter?.date ?? null;
+  const tags = Array.isArray(frontMatter.tags) ? frontMatter.tags : [];
 
   const formattedDate =
     date
@@ -37,6 +38,17 @@ export default function BlogLayout({ mdxSource, children, frontMatter }) {
     >
       {/* Title */}
       {title && <h1>{title}</h1>}
+
+      
+      {tags.length > 0 && (
+        <div className="post-tags">
+          {tags.map((tag) => (
+            <span key={tag} className="tag">
+              {tag}
+            </span>
+          ))}
+        </div>
+      )}
 
       {/* Date */}
       {formattedDate && (
