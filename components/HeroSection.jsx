@@ -27,7 +27,7 @@ export default function HeroSection() {
   <div className="relative z-10 max-w-3xl mx-auto py-20 px-6">
     <h1 className="text-4xl md:text-5xl font-bold text-white">Welcome to StrikeSec.dev</h1>
     <p className="mt-4 text-lg text-gray-300">
-      Explore StrikeSecLive's development hub at strikesec.dev. Learn penetration testing techniques, security best practices, and advanced tools for ethical hacking.
+      Explore StrikeSecLive's development hub at strikesec.dev. <br />Learn penetration testing techniques, security best practices, and advanced tools for ethical hacking.
     </p>
     <div className="mt-8">
       <VisitBlogButton />
