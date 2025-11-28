@@ -47,7 +47,7 @@ export default function HeroSection() {
         >
           <h1 style={{ fontSize: '3rem', marginBottom: '1rem' }}>Welcome to StrikeSec.dev</h1>
           <p style={{ fontSize: '1.25rem', maxWidth: '600px', marginBottom: '2rem' }}>
-             Explore StrikeSecLive's development hub at strikesec.dev. <br /><br />Learn penetration testing techniques, security best practices, and advanced tools for ethical hacking.
+             Explore StrikeSecLive's development hub at strikesec.dev, your hub for penetration testing tools, security resources, and development insights.<br /><br />Learn penetration testing techniques, security best practices, and advanced tools for ethical hacking.
           </p>
           <div className="mt-8">
            <VisitBlogButton />
