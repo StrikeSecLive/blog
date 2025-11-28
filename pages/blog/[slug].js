@@ -1,5 +1,4 @@
 import Head from 'next/head';
-import { useEffect, useState } from 'react';
 import { serialize } from 'next-mdx-remote/serialize';
 import remarkGfm from 'remark-gfm';
 import rehypeSlug from 'rehype-slug';
@@ -48,22 +47,6 @@ export default function BlogPost({ frontMatter, mdxSource }) {
   const description = frontMatter.excerpt ?? '';
   const keywords = Array.isArray(frontMatter.tags) ? frontMatter.tags.join(',') : '';
 
-  const [scrollProgress, setScrollProgress] = useState(0);
-  const [showButton, setShowButton] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollTop = window.scrollY;
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const progress = (scrollTop / docHeight) * 100;
-      setScrollProgress(progress);
-      setShowButton(scrollTop > 100);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-
   return (
     <>
       <Head>
@@ -76,44 +59,6 @@ export default function BlogPost({ frontMatter, mdxSource }) {
         <meta property="og:url" content={`https://strikesec.dev/blog/${frontMatter.slug}`} />
         <link rel="canonical" href={`https://strikesec.dev/blog/${frontMatter.slug}`} />
       </Head>
-
-      
-      {/* Scroll Progress Bar */}
-      <div
-        style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          width: `${scrollProgress}%`,
-          height: '4px',
-          backgroundColor: '#0070f3',
-          zIndex: 9999,
-          transition: 'width 0.2s ease-out'
-        }}
-      />
-
-      {/* Back to Top Button */}
-      {showButton && (
-        <button
-          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          style={{
-            position: 'fixed',
-            bottom: '20px',
-            right: '20px',
-            padding: '10px 15px',
-            backgroundColor: '#0070f3',
-            color: '#fff',
-            border: 'none',
-            borderRadius: '5px',
-            cursor: 'pointer',
-            zIndex: 9999,
-            opacity: showButton ? 1 : 0,
-            transition: 'opacity 0.5s ease-in-out'
-          }}
-        >
-          ↑ Back to Top
-        </button>
-      )}
 
       <BlogLayout mdxSource={mdxSource} frontMatter={frontMatter} />
     </>
