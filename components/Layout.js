@@ -16,6 +16,7 @@ export default function Layout({ children, hideNav = false }) {
       <Head>
         {/* Proper responsive viewport */}
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>StrikeSecLive Development</title>
 
         {/* SEO Meta Tags */}
         <meta name="title" content="StrikeSecLive Development | Penetration Testing & Security Tools" />
