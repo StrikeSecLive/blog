@@ -25,7 +25,7 @@ export default function HeroSection() {
 
   {/* Content */}
   
-<div style={{ textAlign: 'center', padding: '2rem' }}>
+<div style={{ position: 'relative', height: '100vh', overflow: 'hidden' }}>
   <video
           autoPlay
           muted
@@ -38,7 +38,7 @@ export default function HeroSection() {
             width: '100%',
             height: '100%',
             objectFit: 'cover',
-            zIndex: -1,
+            zIndex: 0,
           }}
         >
           <source src="/strikesecdev-landing.mp4" type="video/mp4" />
