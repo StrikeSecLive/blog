@@ -42,7 +42,7 @@ export default function BlogIndex({ posts }) {
       <h1 className="mb-4 text-white text-2xl font-semibold">Blog</h1>
       <p className="mb-8 text-gray-300">Latest posts, write-ups, and notes.</p>
 
-      <div className="grid gap-5 grid-cols-[repeat(auto-fill,minmax(280px,1fr))]">
+      <div className="grid gap-8 grid-cols-[repeat(auto-fill,minmax(280px,1fr))]">
         {posts.map((post) => (
           <article
             key={post.slug}
@@ -68,7 +68,7 @@ export default function BlogIndex({ posts }) {
                 />
               </div>
 
-              <div className="p-4">
+              <div className="p-5">
                 <h2 className="text-gray-900 text-lg font-semibold m-0">{post.title}</h2>
 
                 {post.date && (
