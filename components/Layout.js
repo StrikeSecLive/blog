@@ -16,6 +16,8 @@ export default function Layout({ children, hideNav = false }) {
       <Head>
         {/* Proper responsive viewport */}
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        {/* Add favicon */}
+        <link rel="icon" href="/favicon.ico" />
       </Head>
 
       {!hideNav && (
