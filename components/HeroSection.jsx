@@ -6,7 +6,7 @@ export default function HeroSection() {
     <>
       <Head>
         <title>StrikeSecLive Development</title>
-        <meta name="description" content="Welcome to StrikeSecLive Development Hub. Explore penetration testing tools, security resources, and developer insights." />
+        <meta name="description" content="Explore StrikeSecLive's development hub at strikesec.dev. Learn penetration testing techniques, security best practices, and advanced tools for ethical hacking." />
       </Head>
 
       <div style={{ position: 'relative', height: '100vh', overflow: 'hidden' }}>
@@ -45,9 +45,9 @@ export default function HeroSection() {
             backgroundColor: 'rgba(0, 0, 0, 0.4)',
           }}
         >
-          <h1 style={{ fontSize: '3rem', marginBottom: '1rem' }}>Welcome to StrikeSec.dev</h1>
+          <h1 style={{ fontSize: '3rem', marginBottom: '1rem' }}>Explore StrikeSecLive's development hub at strikesec.dev</h1>
           <p style={{ fontSize: '1.25rem', maxWidth: '600px', marginBottom: '2rem' }}>
-            Explore StrikeSecLive's development hub at strikesec.dev. <br /><br />Learn penetration testing techniques, security best practices, and advanced tools for ethical hacking.
+            Learn penetration testing techniques, security best practices, and advanced tools for ethical hacking.
           </p>
           <div className="mt-8">
            <VisitBlogButton />
