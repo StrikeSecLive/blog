@@ -38,43 +38,62 @@ export async function getStaticProps() {
 
 export default function BlogIndex({ posts }) {
   return (
-    <main className="p-8">
-      <h1 className="mb-4 text-white text-2xl font-semibold">Blog</h1>
-      <p className="mb-8 text-gray-300">Latest posts, write-ups, and notes.</p>
+    <main style={{ padding: '2rem' }}>
+      <h1 style={{ marginBottom: '1rem' }}>Blog</h1>
+      <p style={{ color: '#666', marginBottom: '2rem' }}>
+        Latest posts, write-ups, and notes.
+      </p>
 
-      <div className="grid gap-8 grid-cols-[repeat(auto-fill,minmax(280px,1fr))]">
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
+          gap: '1.25rem',
+        }}
+      >
         {posts.map((post) => (
           <article
             key={post.slug}
+            style={{
+              border: '1px solid #e5e7eb',
+              borderRadius: '12px',
+              overflow: 'hidden',
+              background: '#fff',
+            }}            
             className="
-              group
-              rounded-xl overflow-hidden bg-white
-              border border-gray-200
+              group rounded-xl overflow-hidden bg-white border border-gray-200 p-4
               transition-transform transition-shadow duration-300
-              hover:-translate-y-1
-              hover:shadow-[0_0_20px_rgba(165,246,58,0.6)]
+              hover:-translate-y-1 hover:shadow-[0_0_20px_rgba(165,246,58,0.6)]
               focus-within:shadow-[0_0_20px_rgba(165,246,58,0.6)]
               dark:bg-slate-800
-            "
+             "
           >
-            <Link href={`/blog/${post.slug}`} className="no-underline text-inherit block">
-              <div className="relative w-full bg-gray-100 aspect-[16/9]">
+            <Link
+              href={`/blog/${post.slug}`}
+              style={{ textDecoration: 'none', color: 'inherit' }}
+            >
+              <div
+                style={{
+                  position: 'relative',
+                  width: '100%',
+                  aspectRatio: '16/9',
+                  background: '#f3f4f6',
+                }}
+              >
                 <Image
                   src={post.thumbnail}
                   alt={post.title}
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  className="object-cover"
+                  style={{ objectFit: 'cover' }}
                 />
               </div>
-
-              <div className="p-5">
-                <h2 className="text-gray-900 text-lg font-semibold m-0">{post.title}</h2>
-
+              <div style={{ padding: '1rem' }}>
+                <h2 style={{ fontSize: '1.1rem', margin: 0 }}>{post.title}</h2>
                 {post.date && (
                   <time
                     dateTime={post.date}
-                    className="text-sm text-gray-500"
+                    style={{ color: '#6b7280', fontSize: '0.875rem' }}
                   >
                     {new Date(post.date).toLocaleDateString(undefined, {
                       year: 'numeric',
@@ -83,9 +102,10 @@ export default function BlogIndex({ posts }) {
                     })}
                   </time>
                 )}
-
                 {post.excerpt && (
-                  <p className="mt-2 text-gray-700">{post.excerpt}</p>
+                  <p style={{ marginTop: '0.5rem', color: '#4b5563' }}>
+                    {post.excerpt}
+                  </p>
                 )}
               </div>
             </Link>
