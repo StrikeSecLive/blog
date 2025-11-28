@@ -1,0 +1,118 @@
+/* Tailwind entry points */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body {
+    background-color: #2b3742 !important;
+    color: white;
+    font-family: sans-serif;
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* MDX / Blog Typography */
+.prose .anchor {
+  position: absolute;
+  margin-left: -1.5rem;
+  padding-left: 0.5rem;
+  color: #9ca3af;
+  text-decoration: none;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+.prose *:hover > .anchor {
+  opacity: 1;
+}
+
+.prose a {
+  color: #a5f63a;
+  text-decoration: underline;
+  transition: color 0.2s ease;
+}
+.prose a:hover {
+  color: #22c55e;
+}
+
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+  overflow: hidden;
+  border-radius: 0.5rem;
+}
+.prose thead {
+  background-color: #f9fafb;
+}
+.prose th,
+.prose td {
+  border: 1px solid #d1d5db;
+  padding: 1rem;
+  vertical-align: top;
+}
+.prose tbody tr:nth-child(even) {
+  background-color: #f9fafb;
+}
+.prose table table {
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+.prose pre {
+  background-color: #1f2937;
+  color: #f3f4f6;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  max-width: 100%;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+.prose code {
+  color: #a5f63a;
+  font-weight: 500;
+  word-break: normal;
+}
+
+.prose img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.25rem;
+}
+
+.copy-btn {
+  background-color: #a5f63a;
+  color: #2b3742;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 14px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.3s ease;
+}
+.copy-btn:hover {
+  background-color: #8ef20b;
+  box-shadow: 0 4px 10px rgba(165, 246, 58, 0.3);
+}
+.copy-btn.copied {
+  background-color: #bbf86b;
+}
+.copy-btn .icon {
+  fill: currentColor;
+}
