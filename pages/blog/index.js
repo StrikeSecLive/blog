@@ -58,6 +58,7 @@ export default function BlogIndex({ posts }) {
               border: '1px solid #e5e7eb',
               borderRadius: '12px',
               overflow: 'hidden',
+              background-color:'white',
               color: '#2b3742',
             }}            
             className="
