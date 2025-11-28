@@ -58,7 +58,6 @@ export default function BlogIndex({ posts }) {
               border: '1px solid #e5e7eb',
               borderRadius: '12px',
               overflow: 'hidden',
-              background: '#fff',
             }}            
             className="
               group rounded-xl overflow-hidden bg-white border border-gray-200 p-4
