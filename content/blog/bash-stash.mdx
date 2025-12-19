@@ -64,7 +64,9 @@ import Script from 'next/script'
 - [Port scanner](#port-scanner)
 - [Subdomain scanner](#subdomain-scanner)
 
-Bash scripting is highly valuable in offensive security because it leverages the principle of **living off the land**, using native tools and interpreters already present on target systems rather than introducing foreign binaries that could trigger defenses. This approach minimizes the operational footprint and helps maintain **stealth**, as scripts blend into normal administrative activity. Bash enables **rapid automation** of reconnaissance, **privilege escalation** checks, and **lateral movement** using built-in utilities like curl, wget, grep, and awk, reducing dependency on external frameworks. By chaining these commands in scripts, attackers can execute complex tasks without dropping large executables, making detection harder for signature-based defenses. Ultimately, Bash scripting aligns with **low-noise**, **low-risk** methodologies, allowing operators to remain covert while achieving objectives efficiently.
+<div style="color:#fff;">
+<p>
+Bash scripting is highly valuable in offensive security because it leverages the principle of **living off the land**, using native tools and interpreters already present on target systems rather than introducing foreign binaries that could trigger defenses. This approach minimizes the operational footprint and helps maintain **stealth**, as scripts blend into normal administrative activity. Bash enables **rapid automation** of reconnaissance, **privilege escalation** checks, and **lateral movement** using built-in utilities like curl, wget, grep, and awk, reducing dependency on external frameworks. By chaining these commands in scripts, attackers can execute complex tasks without dropping large executables, making detection harder for signature-based defenses. Ultimately, Bash scripting aligns with **low-noise**, **low-risk** methodologies, allowing operators to remain covert while achieving objectives efficiently.</p>
 
 For example, consider the following code. Why is this "stealthy"?:
 
@@ -72,6 +74,7 @@ For example, consider the following code. Why is this "stealthy"?:
 - **Low operating footprint:** Writes to /dev/shm (RAM‑backed) to avoid persistent disk artifacts and reduce I/O.
 - **Noise reduction:** Uses HEAD requests, short timeouts, and random jitter; avoids aggressive port scans—prefers passive discovery via ARP.
 - **Blends with admin behaviour:** User‑Agent + headers resemble normal browser/admin traffic; slow cadence reduces anomaly spikes.
+</div>
 
 ```bash
 #!/usr/bin/env bash
