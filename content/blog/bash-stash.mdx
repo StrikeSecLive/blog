@@ -344,6 +344,19 @@ awk '{print $1}' "$LOG_FILE" | sort | uniq -c | sort -nr | head -n 10
 
 ## Listen with netcat
 <div class="main-text">
+Why you’d do this (offensive‑security context):
+1. Catch reverse shells during exploitation
+When exploiting a remote service or running a payload that calls back to your machine, you need a listener to **receive** that connection and interact with the shell or data stream.
+
+2. Network path validation
+Before firing a full payload, you can verify whether the target can **reach your port** (egress rules, NAT, firewall path) by initiating a connection from the target (ncat ***your_ip*** 4444) and confirming you see/receive data.
+
+3. Low‑footprint troubleshooting
+Ncat is tiny, ubiquitous on many toolkits, and doesn’t require complex configuration—useful for **quick tests** in constrained environments.
+
+4. Multi‑session collection
+With <code>-k</code>, you can accept **multiple callbacks** without restarting the listener. Useful when testing multiple hosts or repeating the exploit.
+
 </div>
 <div className="code-wrap">
 
