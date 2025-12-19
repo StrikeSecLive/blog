@@ -193,7 +193,12 @@ done < "$USERS"
 </div>
 
 ## Vulnerability scanner
-
+<div class="main-text">
+This script takes a single argument, a URL (e.g., http://example.com). It sends a HEAD request (curl -I) to fetch only HTTP response headers, then extracting the Server header line (e.g., Server: Apache/2.4.29 (Ubuntu)). It then compares that header to:
+- A specific version marker you’ve labeled as vulnerable: Apache/2.4.29.
+- A novelty case for Python’s built‑in server: SimpleHTTP/0.6 Python.
+- Prints a verdict based on the match (vulnerable, cute message, or not found).
+</div>
 <div className="code-wrap">
 
 ```bash
