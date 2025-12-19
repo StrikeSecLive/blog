@@ -248,7 +248,7 @@ Why you’d automate Nmap like this:
 1. Repeatability & auditability
 Engagements often need the same baseline scans run multiple times (daily, per sprint, or pre/post‑patch). Automating from a targets.txt list guarantees consistent methodology, while per‑host files produce a clear audit trail you can reference in reports.
 2. Organization and correlation
-The nmap_scans/<host>_scan.txt pattern makes it trivial to:
+The nmap_scans/***host***_scan.txt pattern makes it trivial to:
 - Diff results between scan runs (git diff, diff, meld).
 - Grep across all outputs for particular CVE‑prone versions or services. This supports rapid triage and prioritization.
 - Version intelligence for vulnerability mapping
