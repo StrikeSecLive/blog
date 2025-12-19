@@ -493,7 +493,22 @@ fi
 </div>
 
 ## Web dir buster
+<div class="main-text">
+### Why you’d do directory/path discovery
+1. Attack surface mapping: 
+- Hidden or unlinked paths (e.g., /admin, /backup, /old, /api/v1, /debug) often expose **functionality, data, or configuration** you can leverage.
+- Enumerating these paths early gives you a **roadmap** for follow‑up testing (auth checks, parameter manipulation, business logic flaws).
 
+2. Versioning & legacy endpoints
+- Many apps keep **older build**s or **staging folders** online (e.g., /v2/, /beta/, /old/), which can include **known vulnerabilities** or weaker controls compared to the main app.
+
+3. Access control testing
+- Responses like <code>401 Unauthorized</code> or <code>403 Forbidden</code> indicate **protected resources**; these are priority targets for **authorization bypass, IDOR, and misconfiguration** tests.
+
+4. Low‑noise reconnaissance
+- This approach is **living off the land**: a single <code>bash + curl</code> pipeline, short timeouts, and **no bulky scanner binaries**. It blends with normal admin traffic and keeps your **operating footprint** small.
+
+</div>
 <div className="code-wrap">
 
 ```bash
