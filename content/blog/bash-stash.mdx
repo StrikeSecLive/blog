@@ -53,9 +53,20 @@ import Script from 'next/script'
   .card { background: #0b1220; border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin: 1rem 0 2rem 0; }
 `}</style>
 
+- [SSH brute-forcing with sshpass](#ssh-brute-forcing-with-sshpass)
+- [Vulnerability scanner](#vulnerability-scanner)
+- [Nmap automator](#nmap-automator)
+- [Log parser](#log-parser)
+- [Listen with netcat](#listen-with-netcat)
+- [Hash cracker](#hash-cracker)
+- [Banner grabber](#banner-grabber)
+- [Web dir buster](#web-dir-buster)
+- [Port scanner](#port-scanner)
+- [Subdomain scanner](#subdomain-scanner)
+
 <div className="content">
 
-# SSH brute-forcing with sshpass
+## SSH brute-forcing with sshpass
 
 <div className="code-wrap">
 
@@ -96,7 +107,7 @@ done < "$USERS"
 
 </div>
 
-# Vulnerability scanner
+## Vulnerability scanner
 
 <div className="code-wrap">
 
@@ -141,7 +152,7 @@ fi
 
 </div>
 
-# Nmap automator
+## Nmap automator
 
 <div className="code-wrap">
 
@@ -177,7 +188,7 @@ done < "$TARGET_FILE"
 ```
 </div>
 
-# Log parser
+## Log parser
 
 <div className="code-wrap">
 
@@ -205,7 +216,7 @@ awk '{print $1}' "$LOG_FILE" | sort | uniq -c | sort -nr | head -n 10
 
 </div>
 
-# Listen with netcat
+## Listen with netcat
 
 <div className="code-wrap">
 
@@ -234,7 +245,7 @@ ncat -k -lvnp $PORT
 
 </div>
 
-# Hash cracker
+## Hash cracker
 
 <div className="code-wrap">
 
@@ -272,7 +283,7 @@ echo "[-] Password not found in list."
 ```
 </div>
 
-# Banner grabber
+## Banner grabber
 
 <div className="code-wrap">
 
@@ -314,7 +325,7 @@ fi
 
 </div>
 
-# Web dir buster
+## Web dir buster
 
 <div className="code-wrap">
 
@@ -351,7 +362,7 @@ done < "$WORDLIST"
 ```
 </div>
 
-# Port scanner
+## Port scanner
 
 <div className="code-wrap">
 
@@ -385,7 +396,7 @@ done
 
 </div>
 
-# Subdomain scanner
+## Subdomain scanner
 
 <div className="code-wrap">
 
