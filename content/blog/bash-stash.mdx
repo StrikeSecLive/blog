@@ -51,6 +51,7 @@ import Script from 'next/script'
   .line-numbers .line-numbers-rows > span { border-color: rgba(255, 255, 255, 0.08); }
   code.inline { background: #0b1220; border: 1px solid var(--border); border-radius: 6px; padding: 0.1rem 0.35rem; color: var(--text); }
   .card { background: #0b1220; border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin: 1rem 0 2rem 0; }
+  .main-text { color:#fff; }
 `}</style>
 
 - [SSH brute-forcing with sshpass](#ssh-brute-forcing-with-sshpass)
@@ -64,7 +65,7 @@ import Script from 'next/script'
 - [Port scanner](#port-scanner)
 - [Subdomain scanner](#subdomain-scanner)
 
-<div style="color:#fff;">
+<div class="main-text">
 Bash scripting is highly valuable in offensive security because it leverages the principle of **living off the land**, using native tools and interpreters already present on target systems rather than introducing foreign binaries that could trigger defenses. This approach minimizes the operational footprint and helps maintain **stealth**, as scripts blend into normal administrative activity. Bash enables **rapid automation** of reconnaissance, **privilege escalation** checks, and **lateral movement** using built-in utilities like curl, wget, grep, and awk, reducing dependency on external frameworks. By chaining these commands in scripts, attackers can execute complex tasks without dropping large executables, making detection harder for signature-based defenses. Ultimately, Bash scripting aligns with **low-noise**, **low-risk** methodologies, allowing operators to remain covert while achieving objectives efficiently.
 
 For example, consider the following code. Why is this "stealthy"?:
@@ -73,6 +74,7 @@ For example, consider the following code. Why is this "stealthy"?:
 - **Low operating footprint:** Writes to /dev/shm (RAM‑backed) to avoid persistent disk artifacts and reduce I/O.
 - **Noise reduction:** Uses HEAD requests, short timeouts, and random jitter; avoids aggressive port scans—prefers passive discovery via ARP.
 - **Blends with admin behaviour:** User‑Agent + headers resemble normal browser/admin traffic; slow cadence reduces anomaly spikes.
+
 </div>
 
 ```bash
@@ -139,7 +141,9 @@ echo "  - $SCRATCH/listeners.txt (local listeners)"
 
 # Clean-up trap (optional: uncomment to delete immediately after viewing# Clean-up trap (optional: uncomment to delete immediately after viewing)
 ```
+<div class="main-text">
 So let's dive into some more ready-to-use examples...
+</div>
 
 <div className="content">
 
