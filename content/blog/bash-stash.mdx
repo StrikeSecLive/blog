@@ -302,7 +302,7 @@ This script contains some red-hot Linux commands so I'll break it down, line‑b
 - Existence check: If access.log isn't present, exit with an error.
 - Message: Prints a header describing the upcoming summary.
 - Pipeline:
-1. <code>awk '{print $1}' "$LOG_FILE"</code> — extracts the first column from each line, which in common web server access logs (e.g., Nginx/Apache) is the client IP.
+1. <code>awk '{print $1}' '$LOG_FILE'</code> — extracts the first column from each line, which in common web server access logs (e.g., Nginx/Apache) is the client IP.
 2. <code>sort</code> — sorts the IPs so identical values are adjacent.
 3. <code>uniq -c</code> — collapses duplicates and counts occurrences per unique IP.
 4. <code>sort -nr</code> — numerically sorts the counts in descending order (most frequent first).
