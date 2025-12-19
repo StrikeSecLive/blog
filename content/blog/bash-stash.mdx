@@ -428,7 +428,30 @@ echo "[-] Password not found in list."
 </div>
 
 ## Banner grabber
+<div class="main-text">
+Why banner grabbing is useful
 
+**Banner grabbing** is the practice of connecting to a service and reading its initial response string or headers to learn what software and version is running. This is valuable because:
+
+1. Rapid reconnaissance:
+- Quickly fingerprints services (e.g., OpenSSH_9.3p2, Microsoft-IIS/10.0, Exim 4.x).
+- Helps map the **attack surface** (which services, which versions) before heavier scans.
+
+2. Version‑based vulnerability mapping:
+- Many banners expose versions. Matching versions to **known CVEs** lets you **prioritize targets** or validate findings faster.
+- Example: an outdated Apache/2.4.29 banner suggests checking for historical issues and misconfigurations.
+
+3. Protocol verification and triage:
+- Confirms you’re talking to the expected protocol on a given port (e.g., SMTP speaks 220 …, FTP speaks 220 …, SSH sends SSH-2.0-…).
+- Distinguishes proxy/CDN vs origin behavior (helpful in web apps), guides next steps (HTTP request crafting, TLS tests, etc.).
+
+4. Low‑noise, low‑footprint
+- A simple TCP connect and single line read is **far less noisy** than full vulnerability scans.
+- Fits **“living off the land”** principles: you can do it with built‑in tools (Bash /dev/tcp) or ubiquitous small utilities (netcat/ncat), reducing the chance of triggering signatures for large scanner payloads.
+
+5. Defensive hardening feedback
+- Banners often leak **unnecessary information** (exact versions). Noting exposed banners helps defenders decide where to **suppress or sanitize** headers (e.g., remove/modify Server headers in HTTP, or tune SSH VersionAddendum).
+</div>
 <div className="code-wrap">
 
 ```bash
