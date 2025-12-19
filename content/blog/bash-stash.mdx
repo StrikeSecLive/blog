@@ -96,6 +96,334 @@ done < "$USERS"
 
 </div>
 
+# Vulnerability scanner
+
+<div className="code-wrap">
+
+```bash
+#!/bin/bash
+
+# Save as vuln_scanner.sh
+
+if [ -z "$1" ]; then
+   echo "Usage: ./vuln_scanner.sh <url>"
+   exit 1
+fi
+
+URL=$1
+VULNERABLE_SERVER="Apache/2.4.29"
+
+# 'curl -I' sends a HEAD request to get only headers
+# '-s' silences any output
+# 'grep -i' makes the search case-insensitive
+
+SERVER_HEADER=$(curl -s -I "$URL" | grep -i "Server:")
+
+echo "[*] Target server header: $SERVER_HEADER"
+
+# Check if the vulnerable string is within the header
+
+if [[ "$SERVER_HEADER" == *"$VULNERABLE_SERVER"* ]]; then
+
+   echo "[!] VULNERABLE: Found outdated server version: $SERVER_HEADER"
+
+elif [[ "$SERVER_HEADER" == *"SimpleHTTP/0.6 Python"* ]]; then
+
+   echo "[+] You are running a simple HTTP server with python, how cute!"
+
+else
+
+   echo "[-] Not found to be vulnerable to this specific check."
+
+fi
+
+```
+
+</div>
+
+# Nmap automator
+
+<div className="code-wrap">
+
+```bash
+#!/bin/bash
+
+# Save as nmap_automator.sh
+# Create a file named targets.txt
+
+TARGET_FILE="targets.txt"
+OUTPUT_DIR="nmap_scans"
+
+mkdir -p "$OUTPUT_DIR" # -p prevents error if directory already exists
+
+while read target; do
+
+   # Skip empty lines
+
+   if [ -z "$target" ]; then continue; fi
+
+   echo "[*] Scanning $target..."
+
+   OUTPUT_FILE="$OUTPUT_DIR/${target}_scan.txt"
+
+   # -oN saves the output in normal format
+
+   nmap -sV -T4 -oN "$OUTPUT_FILE" "$target"
+
+   echo "[+] Scan for $target complete. Results saved to $OUTPUT_FILE"
+
+done < "$TARGET_FILE"
+
+```
+</div>
+
+# Log parser
+
+<div className="code-wrap">
+
+```bash
+#!/bin/bash
+
+# Save as log_parser.sh
+# Create a sample access.log file
+
+LOG_FILE="access.log"
+
+if [ ! -f "$LOG_FILE" ]; then
+   echo "Error: $LOG_FILE not found."
+   exit 1
+fi
+
+echo "Top 10 most frequent IP addresses:"
+
+# 'awk' prints the first field (the IP), sort groups them,
+# 'uniq -c' counts unique occurrences, 'sort -nr' sorts numerically in reverse,
+# and 'head -n 10' shows the top 10.
+
+awk '{print $1}' "$LOG_FILE" | sort | uniq -c | sort -nr | head -n 10
+```
+
+</div>
+
+# Listen with netcat
+
+<div className="code-wrap">
+
+```bash
+#!/bin/bash
+
+# Save as listener.sh
+# Uses netcat (ncat) to create a powerful listener.
+
+if ! command -v ncat &> /dev/null; then
+   echo "netcat (ncat) is not installed. Please install it to use this script."
+   exit 1
+fi
+
+PORT=4444
+
+echo "[*] Listening on port $PORT..."
+
+# -l for listen mode, -v for verbose, -p for port, -n to skip DNS
+# Some versions of nc use -e to execute a program on connect, but for a simple
+# interactive shell, this is the most common and reliable form.
+# '-k' - keep connection open
+
+ncat -k -lvnp $PORT
+```
+
+</div>
+
+# Hash cracker
+
+<div className="code-wrap">
+
+```bash
+#!/bin/bash
+
+# Save as hash_cracker.sh
+# Requires md5sum command
+# sunshine = 0571749e2ac330a7455809c6b0e7af90
+
+if [ -z "$1" ]; then
+   echo "Usage: ./hash_cracker.sh <md5_hash>"
+   exit 1
+fi
+
+HASH_TO_CRACK=$1
+
+WORDLIST="passwords.txt"
+
+while read password; do
+   # 'echo -n' prevents a newline character from being part of the hash
+   # 'cut' command extracts just the hash part from the md5sum output
+
+   GUESS=$(echo -n "$password" | md5sum | cut -d ' ' -f 1)
+   
+   if [ "$GUESS" == "$HASH_TO_CRACK" ]; then
+      echo "[+] Password found: $password"
+      exit 0
+   fi
+   
+done < "$WORDLIST"
+
+echo "[-] Password not found in list."
+
+```
+</div>
+
+# Banner grabber
+
+<div className="code-wrap">
+
+```bash
+#!/bin/bash
+# Save as banner_grabber.sh
+
+if [ -z "$2" ]; then
+   echo "Usage: ./banner_grabber.sh <ip> <port>"
+   exit 1
+fi
+
+IP=$1
+PORT=$2
+
+# Use ncat (ncat) if available, a powerful networking utility.
+# '-v' for verbose,
+# '-n' to skip DNS,
+# '-w' for timeout,
+# '-z' to just scan.
+# For banner grabbing, we use a timeout and pipe an empty string.
+
+if command -v ncat &> /dev/null; then
+   echo | ncat -w 2 -v -z "$IP" "$PORT"
+else
+   # Fallback to the /dev/tcp method if nc isn't installed
+   # 'exec 3<>' - opens a bidirectional file descriptor (3) to IP:PORT  
+   exec 3<>/dev/tcp/$IP/$PORT
+
+   # Read the first line from the connection
+   read -r banner <&3
+   
+   echo "[+] Port $PORT Banner: $banner"
+   # close the descriptor 3 for reading and writing
+   exec 3<&-
+   exec 3>&-
+fi
+```
+
+</div>
+
+# Web dir buster
+
+<div className="code-wrap">
+
+```bash
+#!/bin/bash
+
+# Save as web_dir_buster.sh
+# Create a file named dir_list.txt
+
+if [ -z "$1" ]; then
+   echo "Usage: ./web_dir_buster.sh <target_url>"
+   echo "Example: ./web_dir_buster.sh http://127.0.0.1"
+   exit 1
+fi
+
+URL=$1
+
+WORDLIST="dir_list.txt"
+
+while read dir; do
+   # 'curl' fetches the URL.
+   # '-s' silences progress,
+   # '-o' sends output to null,
+   # and '-w' tells curl only to print the http status code.
+   # '--connect-timeout' handles hangs.
+
+   STATUS=$(curl -s -o /dev/null -w "%{http_code}" --connect-timeout 3 "$URL/$dir")
+
+   if [ "$STATUS" -ne 404 ]; then
+      echo "[+] Found: $URL/$dir [Status: $STATUS]"
+   fi
+
+done < "$WORDLIST"
+```
+</div>
+
+# Port scanner
+
+<div className="code-wrap">
+
+```bash
+#!/bin/bash
+
+# Save as port_scanner.sh
+
+if [ -z "$1" ]; then
+  echo "Usage: ./port_scanner.sh <ip_address>"
+  exit 1
+fi
+
+TARGET=$1
+
+PORTS="21 22 80 443 8080"
+
+echo "Scanning $TARGET..."
+
+for port in $PORTS; do
+  # This syntax sends nothing to the target but establishes a connection
+  # The timeout command prevents it from hanging for too long
+  # '(...)' - runs a command inside a subshell, useful isolating the command
+  # Bash has a special feature: '/dev/tcp/host/port' - Writing to this pseudo‑file attempts to
+  # open a TCP connection to the given host ($TARGET) and port ($port).
+  # '&>/dev/null' - silences all output from the subshell
+
+  (timeout 1 bash -c "echo > /dev/tcp/$TARGET/$port") &>/dev/null && echo "[+] Port $port is open"
+done
+```
+
+</div>
+
+# Subdomain scanner
+
+<div className="code-wrap">
+
+```bash
+#!/bin/bash
+
+# Save as subdomain_scanner.sh and run: chmod +x subdomain_scanner.sh
+
+# Requires a subdomains.txt file
+
+# -z = true if length of condition = 0
+
+if [ -z "$1" ]; then
+   echo "Usage: ./subdomain_scanner.sh <domain>"
+   exit 1
+fi
+
+DOMAIN=$1
+WORDLIST="subdomains.txt"
+
+# If the wordlist file does not exist, exit
+
+if [ ! -f "$WORDLIST" ]; then
+   echo "Error: $WORDLIST not found."
+   exit 1
+fi
+
+while read sub; do
+# The 'host' command performs a DNS lookup. We silence output with &> /dev/null
+# '&&' means the second command only runs if the first succeeds
+# '&>' - pipe standard output and errors to /dev/null
+
+  host "$sub.$DOMAIN" &> /dev/null && echo "[+] Found: $sub.$DOMAIN"
+done < "$WORDLIST"
+```
+
+</div>
+
 </div>
 
 {/* Prism core + language + plugins */}
