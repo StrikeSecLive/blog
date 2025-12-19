@@ -545,7 +545,34 @@ done < "$WORDLIST"
 </div>
 
 ## Port scanner
+<div class="main-text">
+Performs a **very lightweight TCP port reachability check** against a handful of common ports on a single target host—using only Bash built‑ins and timeout. This is effectively a <code>SYN+connect</code> style probe (full TCP connect), but implemented via Bash—no external scanners.
 
+### Why you’d do this (instead of using Nmap)
+There are solid reasons to prefer a tiny, built‑in reachability check during certain phases of an engagement:
+1. Living off the land / minimal footprint
+- No need to drop or install large tooling—**only Bash** (present on most Linux/UNIX targets and jump hosts) plus timeout.
+- Reduces the chance of tripping software whitelists, inventory checks, or file‑integrity monitoring that flag “scanner binaries”.
+
+2. Stealthier operational profile
+- A few **targeted connect attempts** on specific ports can blend with normal administrative traffic better than broad, aggressive scans.
+- Useful when you’re validating reachability before launching a payload (e.g., confirming that 443 egress works for a callback).
+
+3. Speed & simplicity for quick checks
+- You might only need to know “is **any** of 22/80/443/8080 open?” to decide the next move.
+- One short connect per port with a 1‑second timeout is fast and clearly bounded.
+
+5. Scriptability & portability
+- Bash one‑liners are easy to **inline** in other scripts, CI pipelines, or cloud-init steps.
+- No XML/grepable outputs or additional flags to remember—just success/failure per port.
+
+5. Reduced signature / fewer heuristics triggered
+- Nmap is powerful but may be associated with recognizable **scan patterns**, packet timings, and fingerprints if misconfigured.
+- A minimalist connect test can be **lower‑signal** to anomaly‑based detection.
+
+**TL;DR:** When you need a tiny, ephemeral, and **low‑noise reachability probe**, this approach is ideal. When you need **depth** (service/version detection, host discovery, NSE scripts), use Nmap.
+
+</div>
 <div className="code-wrap">
 
 ```bash
