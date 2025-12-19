@@ -247,14 +247,18 @@ fi
 Why you’d automate Nmap like this:
 1. Repeatability & auditability
 Engagements often need the same baseline scans run multiple times (daily, per sprint, or pre/post‑patch). Automating from a targets.txt list guarantees consistent methodology, while per‑host files produce a clear audit trail you can reference in reports.
+
 2. Organization and correlation
 The nmap_scans/***host***_scan.txt pattern makes it trivial to:
 - Diff results between scan runs (git diff, diff, meld).
 - Grep across all outputs for particular CVE‑prone versions or services. This supports rapid triage and prioritization.
-- Version intelligence for vulnerability mapping
+
+3. Version intelligence for vulnerability mapping
 <code>-sV</code> gathers service banners/versions. That feeds downstream checks (e.g., quick “is version ≤ X” matches), making it faster to map to known vulnerabilities during recon/validation phases without immediately pulling in heavier scanners.
+
 4. Operational safety vs speed
-<code>-T4</code> is a balanced timing profile. It’s quicker than defaults, but less likely to overwhelm fragile services or trigger rate‑limit alarms compared to -T5. This is useful when you need reasonable speed on approved testing windows while still being considerate of target stability.
+<code>-T4</code> is a balanced timing profile. It’s quicker than defaults, but less likely to overwhelm fragile services or trigger rate‑limit alarms compared to <code>-T5</code>. This is useful when you need reasonable speed on approved testing windows while still being considerate of target stability.
+
 5. Low complexity, easy handoff
 A single Bash file with targets.txt is easy to share with teammates, slot into CI pipelines, or schedule with cron. This helps operationalize recon as part of secure development practices (e.g., nightly checks of dev/staging).
 </div>
