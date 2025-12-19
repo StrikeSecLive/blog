@@ -1,6 +1,8 @@
 
 import React from 'react';
 import Link from 'next/link';
+import Head from 'next/head';
+import Script from 'next/script';
 import CodeBlock from './CodeBlock';
 
 const A = (props) => {
@@ -20,7 +22,9 @@ const MDXComponents = {
   a: A,
   pre: Pre,
   code: (props) => <CodeBlock {...props} />,
-  img: Img,
+  img: Img,  
+  Head,
+  Script,
 };
 
 export default MDXComponents;
