@@ -606,7 +606,17 @@ done
 </div>
 
 ## Subdomain scanner
+<div class="main-text">
+Enumerates subdomains for a given root domain using a wordlist and DNS lookups. Any entry that resolves (i.e., DNS returns an answer) is reported as "Found".
 
+### Why you’d do this (and when)
+Subdomain enumeration expands your view of the attack surface:
+- **Find hidden assets:** Internal dashboards, APIs, staging/beta sites, forgotten services, or legacy endpoints often live under distinct subdomains (e.g., <code>jira.example.com</code>, <code>grafana.example.com</code>, <code>v1-api.example.com</code>).
+- **Prioritize targets:** Each discovered host can expose different ports/services, software stacks, and configurations—useful for triage and chaining attacks.
+- **Low‑noise recon:** DNS queries are typically **less intrusive** than active web or port scans. They often blend with normal operational traffic and keep your **operating footprint** small.
+- **Quick validation:** Before aggressive scanning, confirming which names resolve keeps follow‑up probes focused and efficient.
+
+</div>
 <div className="code-wrap">
 
 ```bash
