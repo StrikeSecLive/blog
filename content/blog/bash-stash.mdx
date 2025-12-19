@@ -1,0 +1,127 @@
+---
+title: "Bash Scripts Stash"
+date: "2025-12-19"
+description: "A batch of bash scripts for offensive security tasks."
+slug: "bash-demo"
+---
+
+import Head from 'next/head'
+import Script from 'next/script'
+
+<Head>
+  <title>Bash Highlighting Demo (Prism.js)</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-tomorrow.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.css" />
+</Head>
+
+<style jsx global>{`
+  :root { --bg:#0f172a; --text:#e5e7eb; --muted:#94a3b8; --card:#111827; --accent:#60a5fa; --radius:10px; --border:#16233b; }
+  body { background:var(--bg); color:var(--text); }
+  .content { max-width: 960px; margin: 3rem auto; padding: 0 1rem; }
+  h1, h2 { line-height: 1.2; margin: 0 0 1rem 0; }
+  h1 { font-size: 2rem; }
+  p { color: var(--muted); }
+  code, pre {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+                 "Fira Code", "Cascadia Code", "JetBrains Mono", "DejaVu Sans Mono", monospace;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  pre[class*="language-"] {
+    background: var(--card);
+    border-radius: var(--radius);
+    padding: 1rem 1.25rem;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.3), 0 6px 20px rgba(0,0,0,0.25);
+    overflow: auto;
+  }
+  .prism-toolbar { position: absolute; right: 0.5rem; top: 0.5rem; }
+  .prism-toolbar button {
+    background: #1f2937;
+    color: var(--text);
+    border: 1px solid #374151;
+    border-radius: 6px;
+    padding: 0.25rem 0.5rem;
+    font-size: 12px;
+    cursor: pointer;
+  }
+  .prism-toolbar button:hover { background: #111827; border-color: #4b5563; }
+  .code-wrap { position: relative; margin: 1.25rem 0; }
+  .line-numbers .line-numbers-rows > span { border-color: rgba(255, 255, 255, 0.08); }
+  code.inline { background: #0b1220; border: 1px solid var(--border); border-radius: 6px; padding: 0.1rem 0.35rem; color: var(--text); }
+  .card { background: #0b1220; border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin: 1rem 0 2rem 0; }
+`}</style>
+
+<div className="content">
+
+# Prism.js Bash Highlighting
+
+Styled with a dark theme, line numbers, and a copy-to-clipboard button. Use <code className="inline">&lt;code class="language-bash"&gt;</code> for Bash.
+
+<div className="card">
+  <strong>Inline Bash:</strong>
+  <p>Try <code className="inline language-bash">ls -la</code> or <code className="inline language-bash">grep -R "needle" ./src</code>.</p>
+</div>
+
+## Script example
+
+<div className="code-wrap">
+
+```bash
+#!/usr/bin/env bash
+set -Eeuo pipefail
+
+# Colors
+RED=$'\033[31m'
+GREEN=$'\033[32m'
+YELLOW=$'\033[33m'
+RESET=$'\033[0m'
+
+log() { printf "%s[%s]%s %s\n" "$YELLOW" "$(date +%H:%M:%S)" "$RESET" "$*"; }
+ok()  { printf "%s✔%s %s\n" "$GREEN" "$RESET" "$*"; }
+err() { printf "%s✖%s %s\n" "$RED"   "$RESET" "$*" >&2; }
+
+usage() {
+  cat <<'USAGE'
+Usage: ./demo.sh [name]
+  name   Who to greet (default: world)
+USAGE
+}
+
+name=${1:-"world"}
+
+log "Starting..."
+if [[ -z "${name}" ]]; then
+  err "Name must not be empty"
+  usage
+  exit 1
+fi
+
+echo "Hello, ${name}!"
+ok "Done"
+```
+
+</div>
+
+## One-liners
+
+<div className="code-wrap">
+
+```bash
+# Find large files (>50MB) in the current repo, excluding .git
+find . -type f -size +50M -not -path "*/.git/*" -print
+
+# Show top 10 largest directories
+du -sh ./* | sort -hr | head -n 10
+```
+
+</div>
+
+</div>
+
+{/* Prism core + language + plugins */}
+<Script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js" strategy="afterInteractive" />
+<Script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-bash.min.js" strategy="afterInteractive" />
+<Script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js" strategy="afterInteractive" />
+<Script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.js" strategy="afterInteractive" />
+<Script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js" strategy="afterInteractive" />
