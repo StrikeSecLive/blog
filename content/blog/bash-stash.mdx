@@ -64,6 +64,81 @@ import Script from 'next/script'
 - [Port scanner](#port-scanner)
 - [Subdomain scanner](#subdomain-scanner)
 
+Bash scripting is highly valuable in offensive security because it leverages the principle of **living off the land**, using native tools and interpreters already present on target systems rather than introducing foreign binaries that could trigger defenses. This approach minimizes the operational footprint and helps maintain **stealth**, as scripts blend into normal administrative activity. Bash enables **rapid automation** of reconnaissance, **privilege escalation** checks, and **lateral movement** using built-in utilities like curl, wget, grep, and awk, reducing dependency on external frameworks. By chaining these commands in scripts, attackers can execute complex tasks without dropping large executables, making detection harder for signature-based defenses. Ultimately, Bash scripting aligns with **low-noise**, **low-risk** methodologies, allowing operators to remain covert while achieving objectives efficiently.
+
+For example, consider the following code. Why is this "stealthy"?:
+
+- **Living off the land:** Uses utilities commonly present on Linux systems (arp, curl, ss, awk). No external binaries are dropped.
+- **Low operating footprint:** Writes to /dev/shm (RAM‑backed) to avoid persistent disk artifacts and reduce I/O.
+- **Noise reduction:** Uses HEAD requests, short timeouts, and random jitter; avoids aggressive port scans—prefers passive discovery via ARP.
+- **Blends with admin behaviour:** User‑Agent + headers resemble normal browser/admin traffic; slow cadence reduces anomaly spikes.
+
+```bash
+#!/usr/bin/env bash
+# stealth_enum.sh — low-noise internal web/service reconnaissance
+set -Eeuo pipefail
+
+# In-memory scratch space (cleared on reboot on most Linux systems)
+SCRATCH=/dev/shm/lotl
+mkdir -p "$SCRATCH"
+
+# Quiet logging helper
+log() { printf '%s %s\n' "$(date +'%H:%M:%S')" "$*" >> "$SCRATCH/enum.log"; }
+
+# Gentle jitter: 0.7–2.3s
+jitter() {
+  awk -v seed="$RANDOM" 'BEGIN{srand(seed); print 0.7 + rand()*1.6}'
+}
+
+# Candidate hosts from local ARP cache (passive discovery, no scans)
+HOSTS_FILE="$SCRATCH/hosts.txt"
+arp -n | awk 'NR>1 && $1 ~ /^[0-9.]+$/ {print $1}' | sort -u > "$HOSTS_FILE"
+
+# If none found, quietly exit
+[[ -s "$HOSTS_FILE" ]] || { log "No ARP hosts found; exiting."; exit 0; }
+
+# Prefer system CA bundle; use HEAD to minimize content
+UA="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122 Safari/537.36"
+
+# Enumerate common web ports very slowly and capture minimal metadata
+while read -r host; do
+  for port in 80 443 8080 8443; do
+    sleep "$(jitter)"
+    # 1) TCP reachability with minimal timeout; avoids long hangs
+    if timeout 2 bash -c " </dev/tcp/$host/$port" 2>/dev/null; then
+      log "open $host:$port"
+
+      # 2) Gentle banner: HEAD with compression and short timeout
+      timeout 3 curl -sS --compressed \
+        -A "$UA" \
+        -H 'Accept: text/html,*/*;q=0.8' \
+        -I "http://$host:$port/" 2>/dev/null \
+        | awk 'BEGIN{h="";t="";s=""}
+               tolower($1)=="server:"{s=$0}
+               tolower($1)=="x-powered-by:"{t=$0}
+               tolower($1)=="location:"{h=$0}
+               END{if(s!="")print s; if(t!="")print t; if(h!="")print h}' \
+        >> "$SCRATCH/web_banners.txt"
+    fi
+  done
+done < "$HOSTS_FILE"
+
+# Optional: correlate local listeners without scanning (reads kernel sockets)
+# Captures only service names and ports; no payloads
+ss -tnlp 2>/dev/null \
+  | awk 'NR>1 {split($4,a,":"); if (a[length(a)] ~ /^[0-9]+$/) print a[length(a)], $NF}' \
+  >> "$SCRATCH/listeners.txt"
+
+# Minimal terminal output; artifacts kept in-memory
+echo "Stealth enum complete. In-memory results:"
+echo "  - $SCRATCH/enum.log (open hosts/ports)"
+echo "  - $SCRATCH/web_banners.txt (server/x-powered-by/location headers)"
+echo "  - $SCRATCH/listeners.txt (local listeners)"
+
+# Clean-up trap (optional: uncomment to delete immediately after viewing# Clean-up trap (optional: uncomment to delete immediately after viewing)
+```
+So let's dive into some more ready-to-use examples...
+
 <div className="content">
 
 ## SSH brute-forcing with sshpass
